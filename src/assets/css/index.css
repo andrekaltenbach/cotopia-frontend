@@ -67,11 +67,15 @@ form textarea {
 }
 
 .btn-primary-fill {
-  @apply bg-purple-700 text-white hover:bg-teal-800/80;
+  @apply bg-teal-800 border-teal-800 text-white hover:bg-teal-800/80 hover:border-teal-800/80;
 }
 
 .btn-secondary {
   @apply border-gray-400 text-gray-500 hover:text-white hover:bg-gray-400;
+}
+
+.btn-disabled {
+  @apply border-gray-400 text-gray-500;
 }
 
 /* card Style*/
