@@ -1,5 +1,5 @@
 import BrowseEventsCard from '../components/BrowseEventsCard';
-import GoCreateEventCard from '../components/GoCreateEventCard';
+import CreateEventCard from '../components/CreateEventCard';
 import InfoCard from '../components/InfoCard';
 
 function Homepage() {
@@ -8,7 +8,7 @@ function Homepage() {
       <InfoCard />
       <div>
         <BrowseEventsCard />
-        <GoCreateEventCard />
+        <CreateEventCard />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { CaretDownIcon } from '@phosphor-icons/react';
+import { Link } from 'react-router-dom';
 
 const solutions = [
   {
@@ -55,10 +56,10 @@ export default function FoldableEventsMenu() {
                   />
                 </div> */}
                 <div>
-                  <a href={item.href} className="font-semibold text-teal-800">
+                  <Link to={item.href} className="font-semibold text-teal-800">
                     {item.name}
                     <span className="absolute inset-0" />
-                  </a>
+                  </Link>
                   <p className="mt-1 text-gray-600">{item.description}</p>
                 </div>
               </div>

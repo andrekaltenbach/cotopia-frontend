@@ -26,7 +26,7 @@ class EventService {
   };
 
   getEvent = (id) => {
-    return this.api.get(`api/events/id`);
+    return this.api.get(`api/events/${id}`);
   };
 
   updateEvent = (id, requestBody) => {
