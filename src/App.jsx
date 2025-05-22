@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import EventsListPage from './pages/EventsListPage';
 import EventDetailsPage from './pages/EventDetailsPage';
 import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/events" element={<EventsListPage />} />
           <Route path="/events/:eventId" element={<EventDetailsPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
       <Footer />

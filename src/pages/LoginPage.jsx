@@ -2,8 +2,7 @@ import { useState } from 'react';
 import authService from '../services/auth.service';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function SignupPage() {
-  const [name, setName] = useState('');
+export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,24 +10,21 @@ export default function SignupPage() {
 
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
-  const handleNameInput = (e) => setName(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Submit');
 
-    const requestBody = { email, password, name };
+    const requestBody = { email, password };
 
     authService
-      .signup(requestBody)
+      .login(requestBody)
       .then((_) => {
-        console.log('user created');
+        console.log('user is logged in');
 
         setEmail('');
         setPassword('');
-        setName('');
-
-        navigate('/login');
+        navigate('/');
       })
       .catch((err) => console.log(err));
   };
@@ -44,15 +40,11 @@ export default function SignupPage() {
           <label htmlFor="password">Password:</label>
           <input type="password" name="password" value={password} onChange={handlePasswordInput} />
         </div>
-        <div className="form-control">
-          <label htmlFor="name">Name:</label>
-          <input type="text" name="name" value={name} onChange={handleNameInput} />
-        </div>
-        {email && password && name ? (
-          <button className="btn btn-primary-fill">Sign Up</button>
+        {email && password ? (
+          <button className="btn btn-primary-fill">Login</button>
         ) : (
           <button disabled={true} className="btn btn-disabled">
-            Signup
+            Login
           </button>
         )}
         <Link to="/">
