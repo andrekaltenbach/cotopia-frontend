@@ -1,4 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
+import FoldableEventsMenu from './FoldableEventsMenu';
+
 function Header() {
   return (
     <div className="Header flex justify-between items-center border-b-1 shadow-md">
@@ -6,12 +8,12 @@ function Header() {
         <img src="src\assets\images\cotopiaLogo.PNG" alt="" className="h-16" />
         <h1 className="text-4xl text-teal-800 font-bold mx-2">cotopia</h1>
       </Link>
-      <ul className="w-45 flex justify-between ">
+      <ul className="w-45 flex justify-between gap-4">
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/events">Events</NavLink>
+          <FoldableEventsMenu />
         </li>
         <li>
           <NavLink to="/about">About</NavLink>
