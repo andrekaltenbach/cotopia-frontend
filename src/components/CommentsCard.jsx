@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import commentService from '../services/comment.service';
 import AddComment from './AddComment';
+import IsPrivat from './IsPrivat';
+import { AuthContext } from '../context/auth.content';
 
 export default function CommentsCard({ eventId }) {
   const [comments, setComments] = useState(null);
   const [formStatus, setFormStatus] = useState(false);
   const [reload, setReload] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const getComments = (id) => {
     commentService
@@ -40,22 +43,37 @@ export default function CommentsCard({ eventId }) {
           })}
         </div>
       )}
-      {!formStatus ? (
-        <button
-          onClick={() => {
-            setFormStatus(true);
-          }}
-          className="btn btn-primary"
-        >
-          Comment Event
-        </button>
+      {formStatus ? (
+        <IsPrivat>
+          <AddComment
+            eventId={eventId}
+            setFormStatus={setFormStatus}
+            reload={reload}
+            setReload={setReload}
+          />
+        </IsPrivat>
       ) : (
-        <AddComment
-          eventId={eventId}
-          setFormStatus={setFormStatus}
-          reload={reload}
-          setReload={setReload}
-        />
+        <div>
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                setFormStatus(true);
+              }}
+              className="btn btn-primary"
+            >
+              Comment Event
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setFormStatus(true);
+              }}
+              className="btn btn-secondary"
+            >
+              login to comment event
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

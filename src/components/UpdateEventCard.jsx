@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
+import { AuthContext } from '../context/auth.content';
+import { useContext } from 'react';
+import IsPrivat from './IsPrivat';
 
 export default function UpdateEventCard({ eventId, reload, setReload }) {
   const [formStatus, setFormStatus] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const apiRequest = (requestBody) => {
     eventService
@@ -19,18 +23,31 @@ export default function UpdateEventCard({ eventId, reload, setReload }) {
   return (
     <div className="card">
       {formStatus ? (
-        <EventInputCard apiRequest={apiRequest} />
+        <IsPrivat>
+          <EventInputCard apiRequest={apiRequest} />
+        </IsPrivat>
       ) : (
         <div>
           <h1>edit event</h1>
-          <button
-            onClick={() => {
-              setFormStatus(true);
-            }}
-            className="btn btn-primary"
-          >
-            edit event
-          </button>
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                setFormStatus(true);
+              }}
+              className="btn btn-primary"
+            >
+              edit event
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setFormStatus(true);
+              }}
+              className="btn btn-secondary"
+            >
+              login to edit event
+            </button>
+          )}
         </div>
       )}
     </div>

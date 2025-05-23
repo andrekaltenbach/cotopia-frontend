@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
-import { useNavigate } from 'react-router-dom';
+import IsPrivat from './IsPrivat';
+import { AuthContext } from '../context/auth.content';
 
 export default function AddEventCard({ reload, setReload }) {
   const [formStatus, setFormStatus] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -22,18 +25,31 @@ export default function AddEventCard({ reload, setReload }) {
   return (
     <div className="card">
       {formStatus ? (
-        <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} />
+        <IsPrivat>
+          <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} />
+        </IsPrivat>
       ) : (
         <div>
           <h1>create your event</h1>
-          <button
-            onClick={() => {
-              setFormStatus(true);
-            }}
-            className="btn btn-primary"
-          >
-            create event
-          </button>
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                setFormStatus(true);
+              }}
+              className="btn btn-primary"
+            >
+              create event
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setFormStatus(true);
+              }}
+              className="btn btn-secondary"
+            >
+              Login to create event
+            </button>
+          )}
         </div>
       )}
     </div>

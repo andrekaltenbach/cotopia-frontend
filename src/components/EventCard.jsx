@@ -2,9 +2,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ImageIcon } from '@phosphor-icons/react';
 import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
+import { AuthContext } from '../context/auth.content';
+import { useContext } from 'react';
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
 
   const handleDelete = () => {
     eventService.deleteEvent(event._id);
@@ -34,9 +37,11 @@ export default function EventCard({ event }) {
         <Link to={`/events`}>
           <button className="btn btn-primary">Back</button>
         </Link>
-        <button className="btn btn-secondary" onClick={handleDelete}>
-          Delete
-        </button>
+        {isLoggedIn && (
+          <button className="btn btn-secondary" onClick={handleDelete}>
+            Delete
+          </button>
+        )}
       </div>
       <CommentsCard eventId={event._id} />
     </div>
