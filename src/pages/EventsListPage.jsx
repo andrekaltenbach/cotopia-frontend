@@ -3,6 +3,7 @@ import eventService from '../services/event.service';
 import { ImageIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import AddEventCard from '../components/AddEventCard';
+import { toast } from 'react-toastify';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
@@ -16,6 +17,7 @@ function EventsListPage() {
       })
       .catch((err) => {
         console.log('error: ', err);
+        toast.error('error: failed to load events');
       });
   }, [reload]);
 

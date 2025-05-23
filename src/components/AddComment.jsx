@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import commentService from '../services/comment.service';
+import { toast } from 'react-toastify';
 
 export default function AddComment({ eventId, setFormStatus, reload, setReload }) {
   const [title, setTitle] = useState('');
@@ -19,9 +20,13 @@ export default function AddComment({ eventId, setFormStatus, reload, setReload }
       .createComment(eventId, requestBody)
       .then((response) => {
         setFormStatus(false);
+        toast.success('add comment successful');
         reload ? setReload(false) : setReload(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error('error: failed to add comment');
+      });
   };
 
   return (

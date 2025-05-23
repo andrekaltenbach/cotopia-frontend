@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import authService from '../services/auth.service';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -27,7 +28,10 @@ export default function LoginPage() {
         setPassword('');
         navigate('/');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error('error: failed to login');
+      });
   };
 
   return (

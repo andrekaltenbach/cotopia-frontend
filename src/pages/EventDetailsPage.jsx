@@ -3,6 +3,7 @@ import eventService from '../services/event.service';
 import { useParams } from 'react-router-dom';
 import EventCard from '../components/EventCard';
 import UpdateEventCard from '../components/UpdateEventCard';
+import { toast } from 'react-toastify';
 
 export default function EventDetailsPage() {
   const [event, setEvent] = useState(null);
@@ -13,7 +14,10 @@ export default function EventDetailsPage() {
     eventService
       .getEvent(eventId)
       .then((response) => setEvent(response.data))
-      .catch((err) => console.log('error: ', err));
+      .catch((err) => {
+        console.log('error: ', err);
+        toast.error('error: failed to load event');
+      });
   };
 
   useEffect(() => {

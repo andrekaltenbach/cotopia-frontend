@@ -4,6 +4,7 @@ import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
 import IsPrivat from './IsPrivat';
 import { AuthContext } from '../context/auth.content';
+import { toast } from 'react-toastify';
 
 export default function AddEventCard({ reload, setReload }) {
   const [formStatus, setFormStatus] = useState(false);
@@ -16,6 +17,8 @@ export default function AddEventCard({ reload, setReload }) {
       .createEvent(requestBody)
       .then((response) => {
         setFormStatus(false);
+        toast.success('add event successful');
+
         // navigate('/events');
         reload ? setReload(false) : setReload(true);
       })

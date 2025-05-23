@@ -3,6 +3,7 @@ import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
 import { AuthContext } from '../context/auth.content';
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 import IsPrivat from './IsPrivat';
 
 export default function UpdateEventCard({ eventId, reload, setReload }) {
@@ -14,10 +15,14 @@ export default function UpdateEventCard({ eventId, reload, setReload }) {
       .updateEvent(eventId, requestBody)
       .then((response) => {
         console.log(response.data);
+        toast.success('event update successful');
         setFormStatus(false);
         reload ? setReload(false) : setReload(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error('error: failed to update event');
+      });
   };
 
   return (

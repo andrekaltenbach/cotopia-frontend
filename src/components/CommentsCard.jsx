@@ -3,6 +3,7 @@ import commentService from '../services/comment.service';
 import AddComment from './AddComment';
 import IsPrivat from './IsPrivat';
 import { AuthContext } from '../context/auth.content';
+import { toast } from 'react-toastify';
 
 export default function CommentsCard({ eventId }) {
   const [comments, setComments] = useState(null);
@@ -14,7 +15,10 @@ export default function CommentsCard({ eventId }) {
     commentService
       .getAllComments(id)
       .then((response) => setComments(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error('error: failed to load comments');
+      });
   };
 
   useEffect(() => {
