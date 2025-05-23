@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import eventService from '../services/event.service';
 import { ImageIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
+import AddEventCard from '../components/AddEventCard';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     eventService
@@ -15,7 +17,7 @@ function EventsListPage() {
       .catch((err) => {
         console.log('error: ', err);
       });
-  }, []);
+  }, [reload]);
 
   if (!events) {
     return <p>Loading...</p>;
@@ -23,24 +25,27 @@ function EventsListPage() {
 
   return (
     <div>
+      <AddEventCard reload={reload} setReload={setReload} />
       <div>
-        {events.map((event, i) => {
-          return (
-            <Link to={`/events/${event._id}`} key={i}>
-              <div className="card flex gap-4">
-                {event.image ? (
-                  <img src={event.image} alt="event image" />
-                ) : (
-                  <ImageIcon size={140} weight="duotone" />
-                )}
-                <div className="pt-4">
-                  <h1>{event.title}</h1>
-                  <p>{event.description}</p>
+        {events
+          .map((event, i) => {
+            return (
+              <Link to={`/events/${event._id}`} key={i}>
+                <div className="card flex gap-4">
+                  {event.image ? (
+                    <img src={event.image} alt="event image" />
+                  ) : (
+                    <ImageIcon size={140} weight="duotone" />
+                  )}
+                  <div className="pt-4">
+                    <h1>{event.title}</h1>
+                    <p>{event.description}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })
+          .reverse()}
       </div>
     </div>
   );
