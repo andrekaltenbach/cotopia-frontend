@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import eventService from '../services/event.service';
 
 export default function AddEventCard() {
@@ -11,6 +11,8 @@ export default function AddEventCard() {
   const [location, setLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
   const [image, setImage] = useState('');
+
+  const navigate = useNavigate();
 
   const handleTitleInput = (e) => setTitle(e.target.value);
   const handleDescriptionInput = (e) => setDescription(e.target.value);
@@ -39,7 +41,7 @@ export default function AddEventCard() {
       .catch((err) => console.log(err));
 
     setCreateStatus(false);
-    console.log('Submit Event');
+    navigate('/events');
   };
 
   return (
@@ -140,6 +142,9 @@ export default function AddEventCard() {
               </button>
             </Link>
           </form>
+          <div>
+            <span className="text-red-700">*</span> required
+          </div>
         </div>
       ) : (
         <div>
@@ -154,9 +159,6 @@ export default function AddEventCard() {
           </button>
         </div>
       )}
-      <div>
-        <span className="text-red-700">*</span> required
-      </div>
     </div>
   );
 }
