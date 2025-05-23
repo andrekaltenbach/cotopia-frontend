@@ -21,7 +21,7 @@ export default function EventDetailsPage() {
   }, [reload]);
 
   if (!event) {
-    return <p>Loading...</p>;
+    return <div class="loader mx-auto my-100"></div>;
   }
 
   return (

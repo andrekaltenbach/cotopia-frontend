@@ -20,7 +20,7 @@ function EventsListPage() {
   }, [reload]);
 
   if (!events) {
-    return <p>Loading...</p>;
+    return <div class="loader mx-auto my-100"></div>;
   }
 
   return (
