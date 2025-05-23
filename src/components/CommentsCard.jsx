@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import commentService from '../services/comment.service';
+import AddComment from './AddComment';
 
 export default function CommentsCard({ eventId }) {
   const [comments, setComments] = useState(null);
+  const [formStatus, setFormStatus] = useState(false);
+  const [reload, setReload] = useState(false);
+
   const getComments = (id) => {
     commentService
       .getAllComments(id)
@@ -12,7 +16,7 @@ export default function CommentsCard({ eventId }) {
 
   useEffect(() => {
     getComments(eventId);
-  }, []);
+  }, [reload]);
 
   if (!comments) {
     return <p>Comments Loading...</p>;
@@ -27,16 +31,32 @@ export default function CommentsCard({ eventId }) {
         <div>
           {comments.map((comment) => {
             return (
-              <div>
+              <div className="card" key={comment._id}>
                 <h1>{comment.title}</h1>
                 <p>{comment.commentText}</p>
-                <p>{comment.createdBy}</p>
+                <p>comment by: {comment.createdBy.name}</p>
               </div>
             );
           })}
         </div>
       )}
-      <button className="btn btn-primary">Comment Event</button>
+      {!formStatus ? (
+        <button
+          onClick={() => {
+            setFormStatus(true);
+          }}
+          className="btn btn-primary"
+        >
+          Comment Event
+        </button>
+      ) : (
+        <AddComment
+          eventId={eventId}
+          setFormStatus={setFormStatus}
+          reload={reload}
+          setReload={setReload}
+        />
+      )}
     </div>
   );
 }

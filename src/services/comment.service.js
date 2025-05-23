@@ -17,8 +17,8 @@ class CommentService {
     });
   }
 
-  createComment = (requestBody, id) => {
-    return this.api.create(`/api/events/${id}/comments`, requestBody);
+  createComment = (id, requestBody) => {
+    return this.api.post(`/api/events/${id}/comments`, requestBody);
   };
 
   getAllComments = (id) => {

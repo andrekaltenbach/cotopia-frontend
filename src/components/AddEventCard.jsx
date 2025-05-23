@@ -12,9 +12,8 @@ export default function AddEventCard({ reload, setReload }) {
     eventService
       .createEvent(requestBody)
       .then((response) => {
-        console.log(response.data);
         setFormStatus(false);
-        navigate('/events');
+        // navigate('/events');
         reload ? setReload(false) : setReload(true);
       })
       .catch((err) => console.log(err));
@@ -23,7 +22,7 @@ export default function AddEventCard({ reload, setReload }) {
   return (
     <div className="card">
       {formStatus ? (
-        <EventInputCard apiRequest={apiRequest} />
+        <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} />
       ) : (
         <div>
           <h1>create your event</h1>
