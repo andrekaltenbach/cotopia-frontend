@@ -8,24 +8,39 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AboutPage from './pages/AboutPage';
+import IsAnon from './components/IsAnon';
 
 function App() {
   return (
-    <>
+    <div>
       <Header />
       <main className="py-5 px-4 container max-w-5x1 mx-auto">
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/events" element={<EventsListPage />} />
           <Route path="/events/:eventId" element={<EventDetailsPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/signup"
+            element={
+              <IsAnon>
+                <SignupPage />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <IsAnon>
+                <LoginPage />
+              </IsAnon>
+            }
+          />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 export default App;
