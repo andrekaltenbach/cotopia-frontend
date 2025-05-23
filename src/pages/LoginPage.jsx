@@ -19,8 +19,9 @@ export default function LoginPage() {
 
     authService
       .login(requestBody)
-      .then((_) => {
-        console.log('user is logged in');
+      .then((response) => {
+        const authToken = response.data.authToken;
+        localStorage.setItem('authToken', authToken);
 
         setEmail('');
         setPassword('');
