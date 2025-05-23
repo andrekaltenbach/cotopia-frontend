@@ -6,11 +6,11 @@ class CommentService {
       baseURL: import.meta.env.SERVER_URL || 'http://localhost:5005',
     });
 
-    this.api.interceptors.request.use(() => {
+    this.api.interceptors.request.use((config) => {
       const storedToken = localStorage.getItem('authToken');
 
       if (storedToken) {
-        configs.headers = { Authorization: `Bearer ${storedToken}` };
+        config.headers = { Authorization: `Bearer ${storedToken}` };
       }
 
       return config;
