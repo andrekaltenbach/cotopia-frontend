@@ -1,19 +1,18 @@
 function InfoCard() {
   return (
     <div className="card">
-      <h1>Wlecome to COTOPIA</h1>
+      <h1 className="text-teal-800 font-bold mb-2">
+        Welcome to Cotopia - Imagine a Community That Truly Connects
+      </h1>
       <p>
-        COTOPIA is a community platform. Take part in co-creating the future of your community.{' '}
-        <br />
-        You have an event that you want the people to know? Or belongings you don't need anymore?{' '}
-        <br />
-        Maybe you need a lift because you don't have a car, or you can offer a lift because you
-        don't want to travel alone? You are looking for an apartment or a house for rent or event
-        for sale? <br />
-        Or you just need a little help from some friends?
+        Picture a world where neighbors support one another, where finding help, sharing resources,
+        and exchanging opportunities is effortless. <br /> That's Cotopia—a place where communities
+        collaborate, trust grows, and possibilities unfold. Whether you need a ride, a new home, a
+        helping hand, or just want to share something meaningful, Cotopia makes it simple. We
+        believe in a future where people are more connected, where life feels just a little more
+        neighborly. Join us and be part of something bigger—Cotopia, where we build the future
+        together.
       </p>
-      <h2>Just post on COTOPIA</h2>
-      <h3>Our goal is to bring people together</h3>
     </div>
   );
 }
