@@ -21,8 +21,8 @@ class EventService {
     return this.api.post('api/events', requestBody);
   };
 
-  getAllEvents = () => {
-    return this.api.get('api/events');
+  getAllEvents = (query = {}) => {
+    return this.api.get(`api/events`, { params: query });
   };
 
   getEvent = (id) => {

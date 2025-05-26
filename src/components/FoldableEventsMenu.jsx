@@ -6,27 +6,27 @@ const solutions = [
   {
     name: 'Events',
     description: 'Browse Events',
-    href: '/events',
+    href: '/events?category=event',
   },
   {
     name: 'Help',
     description: 'Browse Help offers and requests',
-    href: '#',
+    href: '/events?category=help',
   },
   {
     name: 'Real Estate',
     description: 'Browse Apartments or Houses offers and requests',
-    href: '#',
+    href: '/events?category=real estate',
   },
   {
     name: 'Trade',
     description: 'Browse sell, buy or swap offers and requests',
-    href: '#',
+    href: '/events?category=trade',
   },
   {
     name: 'Transportation',
     description: 'Browse transportation offers and requests',
-    href: '#',
+    href: '/events?category=transportation',
   },
 ];
 

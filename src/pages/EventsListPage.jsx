@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import eventService from '../services/event.service';
 import { ImageIcon } from '@phosphor-icons/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AddEventCard from '../components/AddEventCard';
 import { toast } from 'react-toastify';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
   const [reload, setReload] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const category = searchParams.get('category');
+
+    const query = {};
+    if (category) query.category = category;
+
     eventService
-      .getAllEvents()
+      .getAllEvents(query)
       .then((response) => {
         setEvents(response.data);
       })
@@ -19,10 +26,10 @@ function EventsListPage() {
         console.log('error: ', err);
         toast.error('error: failed to load events');
       });
-  }, [reload]);
+  }, [location.search, reload]);
 
   if (!events) {
-    return <div className="loader mx-auto my-100"></div>;
+    return <div className="loader mx-auto my-55"></div>;
   }
 
   return (
