@@ -1,11 +1,12 @@
-import { GithubLogoIcon, LinkedinLogoIcon } from '@phosphor-icons/react';
+import { GithubLogoIcon, LinkedinLogoIcon, LinkIcon } from '@phosphor-icons/react';
 
 import portrait from '../assets/images/andre.jpg';
 export default function AboutPage() {
   return (
-    <div className="flex flex-col justify-center md:flex-row gap-10 max-w-200 mx-auto mt-5">
+    <div className="flex flex-col justify-center md:flex-row gap-10 max-w-200 mx-auto h-full mt-5">
       <div className="mx-auto">
-        <div className="border-t-4 border-b-4 border-teal-800 py-4">
+        {/* <div className="border-t-4 border-b-4 border-teal-800 py-4"> */}
+        <div className="card">
           <h1 className="text-teal-800 font-bold mb-2">
             About Cotopia - Bringing Communities Together
           </h1>
@@ -30,12 +31,12 @@ export default function AboutPage() {
             </span>
           </p>
         </div>
-        <div>
-          <div className="flex gap-8 my-10 justify-start items-center">
+        <div className="card">
+          <div className="flex gap-8 my-10 justify-center items-center">
             <img
               src={portrait}
               alt="portrait André Kaltenbach"
-              className="h-32 w-32 rounded-full"
+              className="h-40 w-40 rounded-full"
             />
             <div>
               <p className="mt-5">André Kaltenbach</p>
@@ -45,34 +46,40 @@ export default function AboutPage() {
                   target="_blank"
                   className="hover:text-teal-800 duration-300"
                 >
-                  <GithubLogoIcon size={24} weight="duotone" />
+                  <GithubLogoIcon size={32} weight="duotone" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/andrekaltenbach/"
                   target="_blank"
                   className="hover:text-teal-800 duration-300"
                 >
-                  <LinkedinLogoIcon size={24} weight="duotone" />
+                  <LinkedinLogoIcon size={32} weight="duotone" />
                 </a>
               </div>
             </div>
           </div>
-          <div className="flex gap-3 pt-5 border-t-2 border-teal-800">
+          <div className="flex flex-col justify-center items-center gap-3 sm:flex-row pt-5 border-t-2 border-teal-800">
             <p>Project Github repositories:</p>
-            <a
-              href="https://github.com/andrekaltenbach/cotopia-frontend"
-              target="_blank"
-              className="text-teal-800"
-            >
-              Front-end repostitory
-            </a>
-            <a
-              href="https://github.com/andrekaltenbach/cotopia-backend"
-              target="_blank"
-              className="text-teal-800"
-            >
-              Backend repostitory
-            </a>
+            <div className="flex gap-3">
+              <a
+                href="https://github.com/andrekaltenbach/cotopia-frontend"
+                target="_blank"
+                className="text-teal-800"
+              >
+                <div className="flex">
+                  <LinkIcon size={20} weight="light" /> Frontend
+                </div>
+              </a>
+              <a
+                href="https://github.com/andrekaltenbach/cotopia-backend"
+                target="_blank"
+                className="text-teal-800"
+              >
+                <div className="flex">
+                  <LinkIcon size={20} weight="light" /> Backend
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

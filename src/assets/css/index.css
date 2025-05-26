@@ -81,7 +81,8 @@ form textarea {
 
 /* card Style*/
 .card {
-  @apply border-2 border-teal-800 rounded-lg shadow-xl p-5 text-center my-5 mx-auto;
+  /* @apply border-2 border-teal-800 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
+  @apply shadow-2xl rounded-lg shadow-xl p-5 text-center my-5 mx-auto;
 }
 
 /* custom dropdown */
