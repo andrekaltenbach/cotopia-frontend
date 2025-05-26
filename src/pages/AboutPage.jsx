@@ -6,7 +6,7 @@ export default function AboutPage() {
     <div className="flex flex-col justify-center md:flex-row gap-10 max-w-200 mx-auto h-full mt-5">
       <div className="mx-auto">
         {/* <div className="border-t-4 border-b-4 border-teal-800 py-4"> */}
-        <div className="card">
+        <div className="card text-center">
           <h1 className="text-teal-800 font-bold mb-2">
             About Cotopia - Bringing Communities Together
           </h1>

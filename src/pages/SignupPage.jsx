@@ -38,7 +38,8 @@ export default function SignupPage() {
   };
 
   return (
-    <div>
+    <div className="card max-w-3xl">
+      <h1 className="w-full text-center font-bold">Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="email">Email:</label>
@@ -52,17 +53,27 @@ export default function SignupPage() {
           <label htmlFor="name">Name:</label>
           <input type="text" name="name" value={name} onChange={handleNameInput} />
         </div>
-        {email && password && name ? (
-          <button className="btn btn-primary-fill">Sign Up</button>
-        ) : (
-          <button disabled={true} className="btn btn-disabled">
-            Signup
-          </button>
-        )}
-        <Link to="/">
-          <button className="btn btn-secondary">Cancel</button>
-        </Link>
+        <div className="text-center mt-8">
+          {email && password && name ? (
+            <button className="btn btn-primary-fill w-30">Sign Up</button>
+          ) : (
+            <button disabled={true} className="btn btn-disabled w-30">
+              Signup
+            </button>
+          )}
+          <Link to="/">
+            <button className="btn btn-secondary ml-5">Cancel</button>
+          </Link>
+        </div>
       </form>
+      <div className="mt-10">
+        <p className="text-center">
+          Already have an account? <br />
+          <Link to="/login" className="text-teal-800">
+            Click here to login
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

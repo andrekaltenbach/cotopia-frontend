@@ -27,7 +27,7 @@ function BrowseEventsCard() {
   };
   return (
     <div className="card">
-      <p className="mb-5 ">Browse events by category</p>
+      <p className="mb-5 w-full text-center">Browse events by category</p>
       <Carousel
         swipeable={false}
         draggable={false}
@@ -53,7 +53,7 @@ function BrowseEventsCard() {
             className="relative w-fit hover:text-teal-800 hover:font-bold"
           >
             <img src={eventImage} alt="help image" className="w-full h-50 md:h-145 object-cover" />
-            <p className="absolute bottom-1 -left-36 md:-left-149 text-white opacity-70 font-bold text-5xl">
+            <p className="absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
               Events
             </p>
           </Link>
@@ -64,7 +64,7 @@ function BrowseEventsCard() {
             className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
           >
             <img src={helpImage} alt="help image" className="w-full h-50 md:h-145 object-cover" />
-            <p className="absolute bottom-1 -left-36 md:-left-149 text-white opacity-70 font-bold text-5xl">
+            <p className="absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
               Help
             </p>
           </Link>
@@ -79,7 +79,7 @@ function BrowseEventsCard() {
               alt="help image"
               className=" w-full h-50 md:h-145 object-cover"
             />
-            <p className="help absolute bottom-1 -left-36 md:-left-149 text-white opacity-70 font-bold text-5xl text-left">
+            <p className="help absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
               Real <br /> Estate
             </p>
           </Link>
@@ -90,7 +90,7 @@ function BrowseEventsCard() {
             className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
           >
             <img src={tradeImage} alt="help image" className="w-full h-50 md:h-145 object-cover" />
-            <p className="help absolute bottom-1 -left-36 md:-left-149 text-white opacity-70 font-bold text-5xl">
+            <p className="help absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
               Trade
             </p>
           </Link>
@@ -105,7 +105,7 @@ function BrowseEventsCard() {
               alt="help image"
               className="w-full h-50 md:h-145 object-cover"
             />
-            <p className="help absolute bottom-1 -left-36 md:-left-149 text-white opacity-70 font-bold text-5xl text-left">
+            <p className="help absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
               Trans-
               <br />
               portation
@@ -113,7 +113,6 @@ function BrowseEventsCard() {
           </Link>
         </div>
       </Carousel>
-      ;
       {/* <p>Browse events by category</p>
       <div className="flex flex-col justify-center items-center border-t pt-5">
         <Link

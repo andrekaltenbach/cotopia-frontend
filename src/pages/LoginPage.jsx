@@ -35,7 +35,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="card max-w-3xl">
+      <h1 className="w-full text-center font-bold">Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="email">Email:</label>
@@ -45,16 +46,18 @@ export default function LoginPage() {
           <label htmlFor="password">Password:</label>
           <input type="password" name="password" value={password} onChange={handlePasswordInput} />
         </div>
-        {email && password ? (
-          <button className="btn btn-primary-fill">Login</button>
-        ) : (
-          <button disabled={true} className="btn btn-disabled">
-            Login
-          </button>
-        )}
-        <Link to="/">
-          <button className="btn btn-secondary">Cancel</button>
-        </Link>
+        <div className="text-center mt-8">
+          {email && password ? (
+            <button className="btn btn-primary-fill w-30">Login</button>
+          ) : (
+            <button disabled={true} className="btn btn-disabled w-30">
+              Login
+            </button>
+          )}
+          <Link to="/">
+            <button className="btn btn-secondary ml-5">Cancel</button>
+          </Link>
+        </div>
       </form>
       <div className="mt-10">
         <p className="text-center">

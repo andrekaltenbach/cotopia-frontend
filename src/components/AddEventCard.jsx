@@ -26,7 +26,7 @@ export default function AddEventCard({ reload, setReload }) {
   };
 
   return (
-    <div className="card">
+    <div className="card text-center">
       {formStatus ? (
         <IsPrivat>
           <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} />

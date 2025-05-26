@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 function IsPrivat({ children }) {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
-  if (isLoading) return <div class="loader mx-auto my-100"></div>;
+  if (isLoading) return <div className="loader mx-auto my-100"></div>;
   if (!isLoggedIn) {
     return <Navigate to="/login" />;
   } else {

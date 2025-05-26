@@ -42,8 +42,12 @@ table tbody tr:hover td {
 }
 
 /* Form Initial Style */
+form {
+  @apply max-w-md mx-auto;
+}
+
 form .form-control {
-  @apply flex flex-col gap-1.5;
+  @apply flex flex-col gap-1.5 pt-3;
 }
 
 form label {
@@ -51,7 +55,7 @@ form label {
 }
 
 form input {
-  @apply border border-gray-300 px-3 py-2 rounded-lg bg-white;
+  @apply border border-teal-800 px-3 py-2 rounded-lg bg-white;
 }
 
 form textarea {
@@ -82,7 +86,7 @@ form textarea {
 /* card Style*/
 .card {
   /* @apply border-2 border-teal-800 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
-  @apply shadow-2xl rounded-lg shadow-xl p-5 text-center my-5 mx-auto;
+  @apply shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto;
 }
 
 /* custom dropdown */
