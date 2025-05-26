@@ -25,7 +25,7 @@ export default function EventDetailsPage() {
   }, [reload]);
 
   if (!event) {
-    return <div class="loader mx-auto my-100"></div>;
+    return <div className="loader mx-auto my-55"></div>;
   }
 
   return (
