@@ -56,6 +56,14 @@ export default function LoginPage() {
           <button className="btn btn-secondary">Cancel</button>
         </Link>
       </form>
+      <div className="mt-10">
+        <p className="text-center">
+          You don't have an account? <br />
+          <Link to="/signup" className="text-teal-800">
+            Click here to sign up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

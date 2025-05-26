@@ -1,7 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { SignInIcon } from '@phosphor-icons/react';
 import { AuthContext } from '../context/auth.content';
 import FoldableEventsMenu from './FoldableEventsMenu';
+import UserDropOut from './UserDropOut';
 import logo from '../assets/images/cotopiaLogo.PNG';
 
 function Header() {
@@ -13,7 +15,7 @@ function Header() {
         <img src={logo} alt="cotopia logo" className="h-12" />
         <h1 className="text-4xl text-teal-800 font-bold mx-2">cotopia</h1>
       </Link>
-      <ul className="w-45 flex justify-between gap-4">
+      <ul className="flex justify-between gap-4">
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -24,21 +26,14 @@ function Header() {
           <NavLink to="/about">About</NavLink>
         </li>
       </ul>
-      {isLoggedIn && (
-        <div className="flex flex-col">
-          <button onClick={logOutUser} className="btn btn-secondary">
-            Logout
-          </button>
-          {/* <span>{user && user.name}</span> */}
-        </div>
-      )}
+      {isLoggedIn && <UserDropOut />}
       {!isLoggedIn && (
-        <div>
-          <Link to="/signup">
-            <button className="btn btn-primary">Signup</button>
-          </Link>
+        <div className="mx-5 flex flex-col items-center">
+          <p className="text-teal-800">sign in</p>
           <Link to="/login">
-            <button className="btn btn-primary mx-4">Login</button>
+            <button className="cursor-pointer text-teal-800">
+              <SignInIcon size={32} weight="light" />
+            </button>
           </Link>
         </div>
       )}
