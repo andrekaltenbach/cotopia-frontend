@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import authService from '../services/auth.service';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../context/auth.content';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { storeToken } = useContext(AuthContext);
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
@@ -22,11 +27,11 @@ export default function LoginPage() {
       .login(requestBody)
       .then((response) => {
         const authToken = response.data.authToken;
-        localStorage.setItem('authToken', authToken);
+        storeToken(authToken, { name: response.data.name });
 
         setEmail('');
         setPassword('');
-        navigate('/');
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);

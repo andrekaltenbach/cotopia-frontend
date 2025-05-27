@@ -8,6 +8,7 @@ export default function AddComment({ eventId, setFormStatus, reload, setReload }
 
   const handleTitleInput = (e) => setTitle(e.target.value);
   const handleCommentTextInput = (e) => setCommentText(e.target.value);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
