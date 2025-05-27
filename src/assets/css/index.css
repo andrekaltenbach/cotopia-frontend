@@ -60,11 +60,14 @@ form label {
 }
 
 form input {
-  @apply border border-teal-600 px-3 py-2 rounded-lg bg-white;
+  @apply border border-gray-300 px-3 py-2 rounded-lg bg-white opacity-60 text-black;
+}
+form select {
+  @apply border border-gray-300 px-3 py-2 rounded-lg bg-white opacity-60 text-black;
 }
 
 form textarea {
-  @apply flex-1 border border-gray-300 p-2 rounded-lg bg-white;
+  @apply flex-1 border border-gray-300 p-2 rounded-lg bg-white opacity-60 text-black;
 }
 
 /* Buttons Style */
@@ -176,12 +179,17 @@ form textarea {
   width: 100%;
 }
 
+.menu-item {
+  color: #333;
+}
+
 .menu-item-link {
   padding: 10px 0;
   width: 100%;
   cursor: pointer;
   font-size: 13px;
   text-align: left;
+  color: #333;
 }
 
 .menu-item .menu-item-link.active,

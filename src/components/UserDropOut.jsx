@@ -49,7 +49,7 @@ export default function UserDropOut() {
             </div>
             <div className="menu-item">
               <div onClick={logOutUser} className="menu-item-link">
-                Logout
+                <p>Logout</p>
               </div>
             </div>
             <div className="menu-item">
