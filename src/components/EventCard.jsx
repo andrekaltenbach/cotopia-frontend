@@ -16,6 +16,22 @@ export default function EventCard({ event }) {
 
   return (
     <div className="card flex flex-col gap-4 text-center w-full">
+      {event.typeOfEvent === 'request' && (
+        <div className=" w-full bg-orange-600 text-white font-bold text-xl rounded-t-lg">
+          <p className="">request</p>
+        </div>
+      )}
+      {event.typeOfEvent === 'offer' && (
+        <div className=" w-full bg-teal-800 text-white font-bold text-xl rounded-t-lg">
+          <p className="">offer</p>
+        </div>
+      )}
+      {/* {event.typeOfEvent === 'request' && (
+        <div className="absolute w-25 triangle bg-orange-600 text-white font-bold text-xl rounded-tl-lg">
+          <p className="absolute top-6 left-0 -rotate-45">request</p>
+        </div>
+      )} */}
+
       <div>
         {event.image ? (
           <img src={event.image} alt="event image" className="mx-auto" />

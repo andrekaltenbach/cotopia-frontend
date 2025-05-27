@@ -93,6 +93,11 @@ form textarea {
   @apply shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto;
 }
 
+.triangle {
+  aspect-ratio: 1;
+  clip-path: polygon(100% 0, 0 100%, 0 0);
+}
+
 /* custom dropdown */
 .relative-div {
   position: relative;

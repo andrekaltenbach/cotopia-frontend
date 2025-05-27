@@ -41,14 +41,28 @@ function EventsListPage() {
             return (
               <Link to={`/events/${event._id}`} key={i}>
                 <div className="card flex gap-4">
-                  {event.image ? (
-                    <img src={event.image} alt="event image" />
-                  ) : (
-                    <ImageIcon size={140} weight="duotone" />
+                  {event.typeOfEvent === 'request' && (
+                    <div className="absolute w-15 triangle bg-orange-600 text-white font-bold text-sm rounded-tl-lg">
+                      <p className="absolute top-3 -left-1 -rotate-45">request</p>
+                    </div>
                   )}
-                  <div className="pt-4">
-                    <h1>{event.title}</h1>
-                    <p>{event.description}</p>
+
+                  {event.typeOfEvent === 'offer' && (
+                    <div className="absolute w-15 triangle bg-teal-800 text-white font-bold text-sm rounded-tl-lg">
+                      <p className="absolute top-3 left-1 -rotate-45">offer</p>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col justify-center items-center">
+                    {event.image ? (
+                      <img src={event.image} alt="event image" />
+                    ) : (
+                      <ImageIcon size={140} weight="thin" />
+                    )}
+                    <div className="pt-4">
+                      <h1>{event.title}</h1>
+                      <p>{event.description}</p>
+                    </div>
                   </div>
                 </div>
               </Link>
