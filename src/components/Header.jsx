@@ -12,8 +12,8 @@ function Header() {
   return (
     <div className="Header flex justify-between items-center border-b-1 shadow-md">
       <Link to="/" className="flex items-center py-4 mx-4">
-        <img src={logo} alt="cotopia logo" className="h-12" />
-        <h1 className="text-4xl text-teal-800 font-bold mx-2">cotopia</h1>
+        {/* <img src={logo} alt="cotopia logo" className="h-12" /> */}
+        <h1 className="text-4xl text-teal-600 font-bold mx-2">cotopia</h1>
       </Link>
       <ul className="flex justify-between gap-4">
         <li>
@@ -29,9 +29,9 @@ function Header() {
       {isLoggedIn && <UserDropOut />}
       {!isLoggedIn && (
         <div className="mx-5 flex flex-col items-center">
-          <p className="text-teal-800">sign in</p>
+          <p className="text-teal-600">sign in</p>
           <Link to="/login">
-            <button className="cursor-pointer text-teal-800">
+            <button className="cursor-pointer text-teal-600">
               <SignInIcon size={32} weight="light" />
             </button>
           </Link>

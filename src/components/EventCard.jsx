@@ -22,7 +22,7 @@ export default function EventCard({ event }) {
         </div>
       )}
       {event.typeOfEvent === 'offer' && (
-        <div className=" w-full bg-teal-800 text-white font-bold text-xl rounded-t-lg">
+        <div className=" w-full bg-teal-600 text-white font-bold text-xl rounded-t-lg">
           <p className="">offer</p>
         </div>
       )}

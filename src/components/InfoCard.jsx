@@ -1,7 +1,7 @@
 function InfoCard() {
   return (
     <div className="card text-center">
-      <h1 className="text-teal-800 font-bold mb-2">
+      <h1 className="text-teal-600 font-bold mb-2">
         Welcome to Cotopia - Imagine a Community That Truly Connects
       </h1>
       <p>

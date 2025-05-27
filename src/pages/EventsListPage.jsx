@@ -48,7 +48,7 @@ function EventsListPage() {
                   )}
 
                   {event.typeOfEvent === 'offer' && (
-                    <div className="absolute w-15 triangle bg-teal-800 text-white font-bold text-sm rounded-tl-lg">
+                    <div className="absolute w-15 triangle bg-teal-600 text-white font-bold text-sm rounded-tl-lg">
                       <p className="absolute top-3 left-1 -rotate-45">offer</p>
                     </div>
                   )}

@@ -50,7 +50,7 @@ function BrowseEventsCard() {
         <div>
           <Link
             to="/events?category=event"
-            className="relative w-fit hover:text-teal-800 hover:font-bold"
+            className="relative w-fit hover:text-teal-600 hover:font-bold"
           >
             <img src={eventImage} alt="help image" className="w-full h-50 md:h-145 object-cover" />
             <p className="absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
@@ -61,7 +61,7 @@ function BrowseEventsCard() {
         <div>
           <Link
             to="/events?category=help"
-            className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+            className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
           >
             <img src={helpImage} alt="help image" className="w-full h-50 md:h-145 object-cover" />
             <p className="absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
@@ -72,7 +72,7 @@ function BrowseEventsCard() {
         <div>
           <Link
             to="/events?category=real estate"
-            className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+            className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
           >
             <img
               src={realEstateIamge}
@@ -87,7 +87,7 @@ function BrowseEventsCard() {
         <div>
           <Link
             to="/events?category=trade"
-            className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+            className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
           >
             <img src={tradeImage} alt="help image" className="w-full h-50 md:h-145 object-cover" />
             <p className="help absolute bottom-3 w-full text-left ml-2 text-white opacity-70 font-bold text-5xl">
@@ -98,7 +98,7 @@ function BrowseEventsCard() {
         <div>
           <Link
             to="/events?category=transportation"
-            className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+            className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
           >
             <img
               src={transportImage}
@@ -117,7 +117,7 @@ function BrowseEventsCard() {
       <div className="flex flex-col justify-center items-center border-t pt-5">
         <Link
           to="/events?category=event"
-          className="relative w-fit hover:text-teal-800 hover:font-bold"
+          className="relative w-fit hover:text-teal-600 hover:font-bold"
         >
           <img src={eventImage} alt="help image" className="w-60 h-40 object-cover" />
           <p className="absolute bottom-1 left-1 text-white opacity-50 font-bold text-5xl">
@@ -126,14 +126,14 @@ function BrowseEventsCard() {
         </Link>
         <Link
           to="/events?category=help"
-          className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+          className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
         >
           <img src={helpImage} alt="help image" className="w-60 h-40 object-cover" />
           <p className="absolute bottom-1 left-1 text-white opacity-50 font-bold text-5xl">Help</p>
         </Link>
         <Link
           to="/events?category=real estate"
-          className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+          className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
         >
           <img src={realEstateIamge} alt="help image" className=" w-60 h-40 object-cover" />
           <p className="help absolute bottom-1 left-1 text-white opacity-50 font-bold text-5xl text-left">
@@ -142,7 +142,7 @@ function BrowseEventsCard() {
         </Link>
         <Link
           to="/events?category=trade"
-          className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+          className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
         >
           <img src={tradeImage} alt="help image" className="w-60 h-40 object-cover" />
           <p className="help absolute bottom-1 left-1 text-white opacity-50 font-bold text-5xl">
@@ -151,7 +151,7 @@ function BrowseEventsCard() {
         </Link>
         <Link
           to="/events?category=transportation"
-          className="relative w-fit mt-3 hover:text-teal-800 hover:font-bold"
+          className="relative w-fit mt-3 hover:text-teal-600 hover:font-bold"
         >
           <img src={transportImage} alt="help image" className="w-60 h-40 object-cover" />
           <p className="help absolute bottom-1 left-1 text-white opacity-60 font-bold text-5xl text-left">

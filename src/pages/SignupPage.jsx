@@ -69,7 +69,7 @@ export default function SignupPage() {
       <div className="mt-10">
         <p className="text-center">
           Already have an account? <br />
-          <Link to="/login" className="text-teal-800">
+          <Link to="/login" className="text-teal-600">
             Click here to login
           </Link>
         </p>

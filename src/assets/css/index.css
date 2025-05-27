@@ -5,17 +5,22 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #333;
+  /* color: #333; */
+  color: #e4e4e4;
   background-color: #fdfbee;
+}
+
+body {
+  @apply bg-[url(/src/assets/images/testImage.jpg)];
 }
 
 /* Header Section */
 .Header ul li {
-  @apply text-lg font-semibold hover:text-teal-800;
+  @apply text-lg font-semibold hover:text-teal-600;
 }
 
 .Header ul li a.active {
-  @apply text-teal-800;
+  @apply text-teal-600;
 }
 
 @import 'tailwindcss';
@@ -55,7 +60,7 @@ form label {
 }
 
 form input {
-  @apply border border-teal-800 px-3 py-2 rounded-lg bg-white;
+  @apply border border-teal-600 px-3 py-2 rounded-lg bg-white;
 }
 
 form textarea {
@@ -68,11 +73,11 @@ form textarea {
 }
 
 .btn-primary {
-  @apply border-teal-800 hover:text-white hover:bg-teal-700 text-teal-800;
+  @apply border-teal-600 hover:text-white hover:bg-teal-700 text-teal-600;
 }
 
 .btn-primary-fill {
-  @apply bg-teal-800 border-teal-800 text-white hover:bg-teal-800/80 hover:border-teal-800/80;
+  @apply bg-teal-600 border-teal-600 text-white hover:bg-teal-600/80;
 }
 
 .btn-secondary {
@@ -89,7 +94,7 @@ form textarea {
 
 /* card Style*/
 .card {
-  /* @apply border-2 border-teal-800 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
+  /* @apply border-2 border-teal-600 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
   @apply shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto;
 }
 

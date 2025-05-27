@@ -62,7 +62,7 @@ export default function LoginPage() {
       <div className="mt-10">
         <p className="text-center">
           You don't have an account? <br />
-          <Link to="/signup" className="text-teal-800">
+          <Link to="/signup" className="text-teal-600">
             Click here to sign up
           </Link>
         </p>

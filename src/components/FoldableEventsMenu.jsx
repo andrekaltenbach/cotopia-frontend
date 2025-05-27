@@ -56,7 +56,7 @@ export default function FoldableEventsMenu() {
                   />
                 </div> */}
                 <div>
-                  <Link to={item.href} className="font-semibold text-teal-800">
+                  <Link to={item.href} className="font-semibold text-teal-600">
                     {item.name}
                     <span className="absolute inset-0" />
                   </Link>
