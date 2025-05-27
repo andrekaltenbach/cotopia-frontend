@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ImageIcon } from '@phosphor-icons/react';
+import { ImageIcon, TrashIcon } from '@phosphor-icons/react';
 import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
 import { AuthContext } from '../context/auth.content';
@@ -15,12 +15,15 @@ export default function EventCard({ event }) {
   };
 
   return (
-    <div className="card flex flex-col gap-4">
+    <div className="card flex flex-col gap-4 text-center w-full">
       <div>
         {event.image ? (
           <img src={event.image} alt="event image" className="mx-auto" />
         ) : (
-          <ImageIcon size={140} weight="duotone" className="mx-auto" />
+          <div className="border w-60 rounded-2xl flex flex-col justify-center mx-auto">
+            <ImageIcon size={140} weight="thin" className="mx-auto" />
+            <p>Image not available</p>
+          </div>
         )}
       </div>
       <div className="pt-4">
@@ -32,14 +35,14 @@ export default function EventCard({ event }) {
         <p>{event.eventURL}</p>
         <p>postet by: {event.createdBy.name}</p>
       </div>
-      <div>
+      <div className="w-full flex justify-center gap-5">
         {/* <Link to={`/events/${event.category}`}> */}
         <Link to={`/events`}>
           <button className="btn btn-primary">Back</button>
         </Link>
         {isLoggedIn && (
-          <button className="btn btn-secondary" onClick={handleDelete}>
-            Delete
+          <button className="text-gray-500 cursor-pointer" onClick={handleDelete}>
+            <TrashIcon size={32} />
           </button>
         )}
       </div>

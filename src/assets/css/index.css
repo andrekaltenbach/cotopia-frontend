@@ -79,6 +79,10 @@ form textarea {
   @apply border-gray-400 text-gray-500 hover:text-white hover:bg-gray-400;
 }
 
+.btn-comment {
+  @apply border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600;
+}
+
 .btn-disabled {
   @apply border-gray-400 text-gray-500;
 }

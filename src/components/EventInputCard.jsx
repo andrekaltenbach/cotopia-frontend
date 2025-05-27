@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import eventService from '../services/event.service';
+import { toast } from 'react-toastify';
 
-export default function EventInputCard({ setFormStatus, apiRequest }) {
+export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
@@ -18,6 +20,25 @@ export default function EventInputCard({ setFormStatus, apiRequest }) {
   const handleToLocationInput = (e) => setToLocation(e.target.value);
   const handleImageInput = (e) => setImage(e.target.value);
 
+  if (eventId) {
+    useEffect(() => {
+      eventService
+        .getEvent(eventId)
+        .then((response) => {
+          setTitle(response.data.title);
+          setDescription(response.data.description);
+          setCategory(response.data.category);
+          setTypeOfEvent(response.data.typeOfEvent);
+          setLocation(response.data.location);
+          setToLocation(response.data.toLocation);
+          setImage(response.data.image);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error('error: failed to get event data');
+        });
+    }, []);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -36,6 +57,7 @@ export default function EventInputCard({ setFormStatus, apiRequest }) {
 
   return (
     <div>
+      <h1 className="w-full text-center font-bold">Create new event</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="title">
@@ -47,9 +69,11 @@ export default function EventInputCard({ setFormStatus, apiRequest }) {
           <label htmlFor="description">
             Description <span className="text-red-700">*</span>:
           </label>
-          <input
+          <textarea
             type="text"
             name="description"
+            rows="4"
+            cols="50"
             value={description}
             onChange={handleDescriptionInput}
           />
@@ -63,7 +87,7 @@ export default function EventInputCard({ setFormStatus, apiRequest }) {
             value={category}
             onChange={handleCategoryInput}
             required={true}
-            className="h-10 border-1 rounded-lg"
+            className="h-10 border-1 rounded-lg bg-white"
           >
             <option disabled={true} value="">
               select...
@@ -84,7 +108,7 @@ export default function EventInputCard({ setFormStatus, apiRequest }) {
             value={typeOfEvent}
             onChange={handleTypeOfEventInput}
             required={true}
-            className="h-10 border-1 rounded-lg"
+            className="h-10 border-1 rounded-lg bg-white"
           >
             <option disabled={true} value="">
               select...
@@ -112,27 +136,29 @@ export default function EventInputCard({ setFormStatus, apiRequest }) {
           <label htmlFor="image">Image URL:</label>
           <input type="text" name="image" value={image} onChange={handleImageInput} />
         </div>
-        {title && description && category && typeOfEvent && location ? (
-          <button className="btn btn-primary-fill">Save</button>
-        ) : (
-          <button disabled={true} className="btn btn-disabled">
-            Save
-          </button>
-        )}
-        <Link to="/">
-          <button
-            onClick={() => {
-              setFormStatus(false);
-            }}
-            className="btn btn-secondary"
-          >
-            Cancel
-          </button>
-        </Link>
+        <div className="w-full mt-3 text-sm">
+          <span className="text-red-700">*</span> required
+        </div>
+        <div className="text-center mt-8">
+          {title && description && category && typeOfEvent && location ? (
+            <button className="btn btn-primary-fill w-30">Save</button>
+          ) : (
+            <button disabled={true} className="btn btn-disabled w-30">
+              Save
+            </button>
+          )}
+          <Link to="/">
+            <button
+              onClick={() => {
+                setFormStatus(false);
+              }}
+              className="btn btn-secondary ml-5"
+            >
+              Cancel
+            </button>
+          </Link>
+        </div>
       </form>
-      <div>
-        <span className="text-red-700">*</span> required
-      </div>
     </div>
   );
 }

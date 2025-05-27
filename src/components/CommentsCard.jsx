@@ -30,15 +30,18 @@ export default function CommentsCard({ eventId }) {
   }
 
   return (
-    <div className="border-gray-800">
-      <h1>Comments:</h1>
+    <div className="text-center my-5 w-11/12 mx-auto">
+      <h1 className="font-bold my-8">Comments</h1>
       {comments.length === 0 ? (
         <p>No comments yet</p>
       ) : (
         <div>
           {comments.map((comment) => {
             return (
-              <div className="card" key={comment._id}>
+              <div
+                className="card border border-orange-600 text-center max-w-4/5"
+                key={comment._id}
+              >
                 <h1>{comment.title}</h1>
                 <p>{comment.commentText}</p>
                 <p>comment by: {comment.createdBy.name}</p>
@@ -57,13 +60,13 @@ export default function CommentsCard({ eventId }) {
           />
         </IsPrivat>
       ) : (
-        <div>
+        <div className="text-center my-8">
           {isLoggedIn ? (
             <button
               onClick={() => {
                 setFormStatus(true);
               }}
-              className="btn btn-primary"
+              className="btn btn-comment"
             >
               Comment Event
             </button>

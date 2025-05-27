@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
 import { AuthContext } from '../context/auth.content';
@@ -26,10 +26,10 @@ export default function UpdateEventCard({ eventId, reload, setReload }) {
   };
 
   return (
-    <div className="card">
+    <div className="card text-center">
       {formStatus ? (
         <IsPrivat>
-          <EventInputCard apiRequest={apiRequest} />
+          <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} eventId={eventId} />
         </IsPrivat>
       ) : (
         <div>

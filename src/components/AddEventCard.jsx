@@ -26,7 +26,7 @@ export default function AddEventCard({ reload, setReload }) {
   };
 
   return (
-    <div className="card text-center">
+    <div className="card text-center max-w-3xl">
       {formStatus ? (
         <IsPrivat>
           <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} />
