@@ -6,9 +6,9 @@ import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import IsPrivat from './IsPrivat';
 
-export default function UpdateEventCard({ eventId, reload, setReload }) {
+export default function UpdateEventCard({ eventId, createdBy, reload, setReload }) {
   const [formStatus, setFormStatus] = useState(false);
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
 
   const apiRequest = (requestBody) => {
     eventService
@@ -26,35 +26,34 @@ export default function UpdateEventCard({ eventId, reload, setReload }) {
   };
 
   return (
-    <div className="card text-center">
-      {formStatus ? (
-        <IsPrivat>
-          <EventInputCard setFormStatus={setFormStatus} apiRequest={apiRequest} eventId={eventId} />
-        </IsPrivat>
-      ) : (
-        <div>
-          <h1>edit event</h1>
-          {isLoggedIn ? (
-            <button
-              onClick={() => {
-                setFormStatus(true);
-              }}
-              className="btn btn-primary"
-            >
-              edit event
-            </button>
+    <>
+      {user?.name === createdBy.name && (
+        <div className="card text-center">
+          {formStatus ? (
+            <IsPrivat>
+              <EventInputCard
+                setFormStatus={setFormStatus}
+                apiRequest={apiRequest}
+                eventId={eventId}
+              />
+            </IsPrivat>
           ) : (
-            <button
-              onClick={() => {
-                setFormStatus(true);
-              }}
-              className="btn btn-secondary"
-            >
-              login to edit event
-            </button>
+            <div>
+              <h1>edit event</h1>
+              {isLoggedIn && (
+                <button
+                  onClick={() => {
+                    setFormStatus(true);
+                  }}
+                  className="btn btn-primary"
+                >
+                  edit event
+                </button>
+              )}
+            </div>
           )}
         </div>
       )}
-    </div>
+    </>
   );
 }

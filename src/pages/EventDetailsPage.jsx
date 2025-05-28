@@ -31,7 +31,12 @@ export default function EventDetailsPage() {
   return (
     <div>
       <EventCard event={event} />
-      <UpdateEventCard eventId={eventId} reload={reload} setReload={setReload} />
+      <UpdateEventCard
+        eventId={eventId}
+        createdBy={event.createdBy}
+        reload={reload}
+        setReload={setReload}
+      />
     </div>
   );
 }
