@@ -58,7 +58,7 @@ function Header() {
           <Hamburger />
         </div>
       </div>
-      <div className="order-3">
+      <div className="order-3 sm:ml-16">
         {isLoggedIn && <UserDropOut />}
         {!isLoggedIn && (
           <div className="mx-5 flex flex-col items-center">

@@ -14,9 +14,9 @@ import IsAnon from './components/IsAnon';
 
 function App() {
   return (
-    <div>
+    <div className="">
       <Header />
-      <main className="pt-2 pb-5 px-4 container max-w-5x1 mx-auto">
+      <main className="pt-2 pb-5 px-4 container max-w-5x1 mx-auto min-h-[calc(100vh_-_130px)]">
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/events" element={<EventsListPage />} />
