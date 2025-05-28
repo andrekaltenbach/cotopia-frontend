@@ -22,8 +22,8 @@ export default function SignupPage() {
 
     authService
       .signup(requestBody)
-      .then((_) => {
-        console.log('user created');
+      .then((response) => {
+        console.log('user created', response.data);
 
         setEmail('');
         setPassword('');
@@ -32,8 +32,13 @@ export default function SignupPage() {
         navigate('/login');
       })
       .catch((err) => {
-        console.log(err);
-        toast.error('error: failed to signup');
+        if (err.response && err.response.data) {
+          console.error('Error:', err.response.data.message);
+          toast.error(err.response.data.message);
+        } else {
+          console.log(err);
+          toast.error('error: failed to signup');
+        }
       });
   };
 

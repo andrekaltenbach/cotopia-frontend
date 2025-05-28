@@ -34,8 +34,13 @@ export default function LoginPage() {
         navigate(from, { replace: true });
       })
       .catch((err) => {
-        console.log(err);
-        toast.error('error: failed to login');
+        if (err.response && err.response.data) {
+          console.error('Error:', err.response.data.message);
+          toast.error(err.response.data.message);
+        } else {
+          console.log(err);
+          toast.error('error: failed to login');
+        }
       });
   };
 
