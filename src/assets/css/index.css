@@ -11,7 +11,7 @@ body {
 }
 
 body {
-  @apply bg-[url(/src/assets/images/testImage.jpg)];
+  @apply bg-[url(/images/testImage.jpg)];
 }
 
 /* Header Section */

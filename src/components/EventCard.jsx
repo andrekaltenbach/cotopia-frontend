@@ -4,22 +4,22 @@ import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
-import eventImage from '../assets/images/eventImage.jpg';
-import helpImage from '../assets/images/helpImage.jpg';
-import realEstateImage from '../assets/images/realEstateImage.jpg';
-import tradeImage from '../assets/images/tradeImage.jpg';
-import transportImage from '../assets/images/transportImage.jpg';
+// import eventImage from '../assets/images/eventImage.jpg';
+// import helpImage from '../assets/images/helpImage.jpg';
+// import realEstateImage from '../assets/images/realEstateImage.jpg';
+// import tradeImage from '../assets/images/tradeImage.jpg';
+// import transportImage from '../assets/images/transportImage.jpg';
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
   const { isLoggedIn, user } = useContext(AuthContext);
 
   const categoryImages = {
-    event: eventImage,
-    help: helpImage,
-    'real estate': realEstateImage,
-    trade: tradeImage,
-    transportation: transportImage,
+    event: '/images/eventImage.jpg',
+    help: '/images/helpImage.jpg',
+    'real estate': '/images/realEstateImage.jpg',
+    trade: '/images/tradeImage.jpg',
+    transportation: '/images/transportImage.jpg',
   };
 
   const handleDelete = () => {

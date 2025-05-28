@@ -1,6 +1,5 @@
 import { GithubLogoIcon, LinkedinLogoIcon, LinkIcon } from '@phosphor-icons/react';
 
-import portrait from '../assets/images/andre.jpg';
 export default function AboutPage() {
   return (
     <div className="flex flex-col justify-center md:flex-row gap-10 max-w-200 mx-auto h-full mt-5">
@@ -34,7 +33,7 @@ export default function AboutPage() {
         <div className="card">
           <div className="flex gap-8 my-10 justify-center items-center">
             <img
-              src={portrait}
+              src="/images/andre.jpg"
               alt="portrait André Kaltenbach"
               className="h-40 w-40 rounded-full"
             />

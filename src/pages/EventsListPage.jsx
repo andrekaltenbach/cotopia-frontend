@@ -4,11 +4,6 @@ import { ImageIcon } from '@phosphor-icons/react';
 import { Link, useLocation } from 'react-router-dom';
 import AddEventCard from '../components/AddEventCard';
 import { toast } from 'react-toastify';
-import eventImage from '../assets/images/eventImage.jpg';
-import helpImage from '../assets/images/helpImage.jpg';
-import realEstateImage from '../assets/images/realEstateImage.jpg';
-import tradeImage from '../assets/images/tradeImage.jpg';
-import transportImage from '../assets/images/transportImage.jpg';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
@@ -16,11 +11,11 @@ function EventsListPage() {
   const location = useLocation();
 
   const categoryImages = {
-    event: eventImage,
-    help: helpImage,
-    'real estate': realEstateImage,
-    trade: tradeImage,
-    transportation: transportImage,
+    event: '/images/eventImage.jpg',
+    help: '/images/helpImage.jpg',
+    'real estate': '/images/realEstateImage.jpg',
+    trade: '/images/tradeImage.jpg',
+    transportation: '/images/transportImage.jpg',
   };
 
   useEffect(() => {
