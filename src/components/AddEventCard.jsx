@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
 import IsPrivat from './IsPrivat';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 import { toast } from 'react-toastify';
 
 export default function AddEventCard({ reload, setReload }) {

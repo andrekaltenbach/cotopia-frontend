@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 import { Navigate, useLocation } from 'react-router-dom';
 
 function IsPrivat({ children }) {

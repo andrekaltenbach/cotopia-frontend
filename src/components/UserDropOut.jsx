@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 
 export default function UserDropOut() {
   const { user, logOutUser } = useContext(AuthContext);

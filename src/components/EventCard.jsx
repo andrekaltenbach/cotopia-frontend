@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ImageIcon, TrashIcon } from '@phosphor-icons/react';
 import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
 
 export default function EventCard({ event }) {

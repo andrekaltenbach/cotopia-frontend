@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { SignInIcon } from '@phosphor-icons/react';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 import FoldableEventsMenu from './FoldableEventsMenu';
 import UserDropOut from './UserDropOut';
 import Hamburger from './Hamburger';

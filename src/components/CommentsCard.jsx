@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import commentService from '../services/comment.service';
 import AddComment from './AddComment';
 import IsPrivat from './IsPrivat';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 import { toast } from 'react-toastify';
 
 export default function CommentsCard({ eventId }) {

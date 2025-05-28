@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
-import { AuthContext } from '../context/auth.content';
+import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import IsPrivat from './IsPrivat';
