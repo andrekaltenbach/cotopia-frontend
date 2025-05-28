@@ -1,14 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { ImageIcon, TrashIcon } from '@phosphor-icons/react';
+import { TrashIcon } from '@phosphor-icons/react';
 import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
-// import eventImage from '../assets/images/eventImage.jpg';
-// import helpImage from '../assets/images/helpImage.jpg';
-// import realEstateImage from '../assets/images/realEstateImage.jpg';
-// import tradeImage from '../assets/images/tradeImage.jpg';
-// import transportImage from '../assets/images/transportImage.jpg';
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
@@ -23,8 +18,17 @@ export default function EventCard({ event }) {
   };
 
   const handleDelete = () => {
-    eventService.deleteEvent(event._id);
-    navigate('/events');
+    eventService
+      .deleteEvent(event._id)
+      .then((response) => {
+        console.log('Event deleted');
+        toast.success('event deleted');
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log('error: ', err);
+        toast.error('error: failed to delete event');
+      });
   };
 
   return (

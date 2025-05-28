@@ -1,12 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
+import userService from '../services/user.service';
+import { toast } from 'react-toastify';
 
 export default function UserDropOut() {
   const { user, logOutUser } = useContext(AuthContext);
 
   const [dropdownToggle, setDropdownToggle] = useState(false);
   const dropdownRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleDropdownToggle = () => {
     setDropdownToggle(!dropdownToggle);
@@ -24,6 +28,22 @@ export default function UserDropOut() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   });
+
+  const handleDelete = () => {
+    userService
+      .deleteUser(user._id)
+      .then((response) => {
+        console.log('User account deleted', response.data);
+        toast.success('User account deleted');
+        handleDropdownToggle();
+        logOutUser();
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log('error: ', err);
+        toast.error('error: failed to delete user account');
+      });
+  };
 
   return (
     <div className="relative-div" ref={dropdownRef}>
@@ -53,7 +73,9 @@ export default function UserDropOut() {
               </div>
             </div>
             <div className="menu-item">
-              <div className="menu-item-link border-t">Delete Account</div>
+              <div onClick={handleDelete} className="menu-item-link border-t">
+                Delete Account
+              </div>
             </div>
           </div>
         </div>
