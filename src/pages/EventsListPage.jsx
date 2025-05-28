@@ -35,12 +35,12 @@ function EventsListPage() {
   return (
     <div>
       <AddEventCard reload={reload} setReload={setReload} />
-      <div>
+      <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:flex-wrap sm:gap-5">
         {events
           .map((event, i) => {
             return (
               <Link to={`/events/${event._id}`} key={i}>
-                <div className="card flex gap-4">
+                <div className="card flex flex-col gap-4 w-80">
                   {event.typeOfEvent === 'request' && (
                     <div className="absolute w-15 triangle bg-orange-600 text-white font-bold text-sm rounded-tl-lg">
                       <p className="absolute top-3 -left-1 -rotate-45">request</p>
@@ -61,7 +61,7 @@ function EventsListPage() {
                     )}
                     <div className="pt-4">
                       <h1>{event.title}</h1>
-                      <p>{event.description}</p>
+                      <p>{event.description.substring(0, 30)}...</p>
                     </div>
                   </div>
                 </div>
