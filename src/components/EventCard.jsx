@@ -26,11 +26,7 @@ export default function EventCard({ event }) {
           <p className="">offer</p>
         </div>
       )}
-      {/* {event.typeOfEvent === 'request' && (
-        <div className="absolute w-25 triangle bg-orange-600 text-white font-bold text-xl rounded-tl-lg">
-          <p className="absolute top-6 left-0 -rotate-45">request</p>
-        </div>
-      )} */}
+      <p>{event.category}</p>
 
       <div>
         {event.image ? (
@@ -44,10 +40,9 @@ export default function EventCard({ event }) {
       </div>
       <div className="pt-4">
         <h1>{event.title}</h1>
-        <p>{event.location}</p>
         <p>{event.description}</p>
-        <p>Category: {event.category}</p>
-        {event.toLocation && <p>Category: {event.category}</p>}
+        {event.toLocation ? <p>from: {event.location}</p> : <p>{event.location}</p>}
+        {event.toLocation && <p>to: {event.toLocation}</p>}
         <p>{event.eventURL}</p>
         <p>postet by: {event.createdBy.name}</p>
       </div>

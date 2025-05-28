@@ -29,8 +29,8 @@ function Header() {
 
   return (
     <div className="Header relative flex justify-between items-center border-b-1 shadow-md">
-      <Link to="/" className="flex items-center py-4 mx-4 order-2 sm:order-0">
-        <h1 className="text-3xl text-teal-600 font-bold mx-2">cotopia</h1>
+      <Link to="/" className="flex items-center py-4 mx-5 order-2 sm:order-0">
+        <h1 className="text-3xl text-teal-600 font-bold">cotopia</h1>
       </Link>
       <div className="menu" ref={menuRef}>
         <ul
@@ -54,7 +54,7 @@ function Header() {
             </NavLink>
           </li>
         </ul>
-        <div className="hamburger order-1 ml-5 sm:hidden" onClick={toggleHamburger}>
+        <div className="hamburger order-1 mx-5 sm:hidden" onClick={toggleHamburger}>
           <Hamburger />
         </div>
       </div>
