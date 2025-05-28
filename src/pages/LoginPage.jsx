@@ -44,13 +44,21 @@ export default function LoginPage() {
       <h1 className="w-full text-center font-bold">Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">
+            Email: <span className="text-red-700">*</span>
+          </label>
           <input type="text" name="email" value={email} onChange={handleEmailInput} />
         </div>
         <div className="form-control">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">
+            Password: <span className="text-red-700">*</span>
+          </label>
           <input type="password" name="password" value={password} onChange={handlePasswordInput} />
         </div>
+        <div className="w-full mt-3 text-sm">
+          <span className="text-red-700">*</span> required
+        </div>
+
         <div className="text-center mt-8">
           {email && password ? (
             <button className="btn btn-primary-fill w-30">Login</button>
