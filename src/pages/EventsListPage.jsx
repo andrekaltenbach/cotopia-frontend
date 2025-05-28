@@ -4,11 +4,24 @@ import { ImageIcon } from '@phosphor-icons/react';
 import { Link, useLocation } from 'react-router-dom';
 import AddEventCard from '../components/AddEventCard';
 import { toast } from 'react-toastify';
+import eventImage from '../assets/images/eventImage.jpg';
+import helpImage from '../assets/images/helpImage.jpg';
+import realEstateImage from '../assets/images/realEstateImage.jpg';
+import tradeImage from '../assets/images/tradeImage.jpg';
+import transportImage from '../assets/images/transportImage.jpg';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
   const [reload, setReload] = useState(false);
   const location = useLocation();
+
+  const categoryImages = {
+    event: eventImage,
+    help: helpImage,
+    'real estate': realEstateImage,
+    trade: tradeImage,
+    transportation: transportImage,
+  };
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -35,7 +48,7 @@ function EventsListPage() {
   return (
     <div>
       <AddEventCard reload={reload} setReload={setReload} />
-      <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-center sm:flex-wrap sm:gap-5">
+      <div className="flex flex-col justify-center items-center mx-auto sm:flex-row sm:justify-center sm:max-w-3xl sm:flex-wrap sm:gap-5">
         {events
           .map((event, i) => {
             return (
@@ -57,7 +70,11 @@ function EventsListPage() {
                     {event.image ? (
                       <img src={event.image} alt="event image" />
                     ) : (
-                      <ImageIcon size={140} weight="thin" />
+                      <img
+                        src={categoryImages[event.category]}
+                        alt="event image"
+                        className="mx-auto w-full rounded-t-2xl sm:w-lg"
+                      />
                     )}
                     <div className="pt-4">
                       <h1>{event.title}</h1>

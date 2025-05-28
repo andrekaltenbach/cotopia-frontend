@@ -4,10 +4,23 @@ import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
 import { AuthContext } from '../context/auth.context';
 import { useContext } from 'react';
+import eventImage from '../assets/images/eventImage.jpg';
+import helpImage from '../assets/images/helpImage.jpg';
+import realEstateImage from '../assets/images/realEstateImage.jpg';
+import tradeImage from '../assets/images/tradeImage.jpg';
+import transportImage from '../assets/images/transportImage.jpg';
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
+
+  const categoryImages = {
+    event: eventImage,
+    help: helpImage,
+    'real estate': realEstateImage,
+    trade: tradeImage,
+    transportation: transportImage,
+  };
 
   const handleDelete = () => {
     eventService.deleteEvent(event._id);
@@ -15,7 +28,7 @@ export default function EventCard({ event }) {
   };
 
   return (
-    <div className="card flex flex-col gap-4 text-center w-full">
+    <div className="card flex flex-col gap-4 text-center max-w-3xl">
       {event.typeOfEvent === 'request' && (
         <div className=" w-full bg-orange-600 text-white font-bold text-xl rounded-t-lg">
           <p className="">request</p>
@@ -32,10 +45,11 @@ export default function EventCard({ event }) {
         {event.image ? (
           <img src={event.image} alt="event image" className="mx-auto" />
         ) : (
-          <div className="border w-60 rounded-2xl flex flex-col justify-center mx-auto">
-            <ImageIcon size={140} weight="thin" className="mx-auto" />
-            <p>Image not available</p>
-          </div>
+          <img
+            src={categoryImages[event.category]}
+            alt="event image"
+            className="mx-auto w-11/12 sm:max-w-2xl"
+          />
         )}
       </div>
       <div className="pt-4">
@@ -51,7 +65,7 @@ export default function EventCard({ event }) {
         <Link to={`/events`}>
           <button className="btn btn-primary">Back</button>
         </Link>
-        {isLoggedIn && (
+        {isLoggedIn && user.name === event.createdBy.name && (
           <button className="text-gray-500 cursor-pointer" onClick={handleDelete}>
             <TrashIcon size={32} />
           </button>

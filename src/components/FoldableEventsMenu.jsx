@@ -36,7 +36,7 @@ export default function FoldableEventsMenu({ setHamburgerOpen }) {
       {({ close }) => (
         <>
           <PopoverButton className="inline-flex items-center">
-            <span>Categories</span>
+            <span className="cursor-pointer">Categories</span>
             <CaretDownIcon size={20} weight="duotone" />
           </PopoverButton>
 
