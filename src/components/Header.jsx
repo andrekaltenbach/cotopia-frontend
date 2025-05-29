@@ -30,7 +30,7 @@ function Header() {
   return (
     <div className="Header relative flex justify-between items-center border-b-1 shadow-md">
       <Link to="/" className="flex items-center py-4 mx-5 order-2 sm:order-0">
-        <h1 className="text-3xl text-teal-600 font-bold">cotopia</h1>
+        <h1 className="title text-3xl text-teal-600">cotopia</h1>
       </Link>
       <div className="menu" ref={menuRef}>
         <ul
@@ -54,24 +54,34 @@ function Header() {
             </NavLink>
           </li>
         </ul>
-        <div className="hamburger order-1 mx-5 sm:hidden" onClick={toggleHamburger}>
+        <div className="hamburger order-1 ml-5 mr-9 sm:hidden" onClick={toggleHamburger}>
           <Hamburger />
         </div>
       </div>
       <div className="order-3 sm:ml-16">
         {isLoggedIn && <UserDropOut />}
         {!isLoggedIn && (
-          <div className="mx-5 flex flex-col items-center">
-            <p className="text-teal-600 hidden sm:block">sign in</p>
+          <div className="mx-5 hover:text-teal-600 cursor-pointer">
             <button
               onClick={() => {
                 navigate('/login', { state: { from: location.pathname } });
               }}
-              className="cursor-pointer text-teal-600"
+              className="signinIcon"
             >
-              <SignInIcon size={32} weight="light" />
+              <h3>sign in</h3>
             </button>
           </div>
+          // <div className="mx-5 flex flex-row gap-2 items-center hover:text-teal-600 cursor-pointer">
+          //   <h3 className=" hidden sm:block">sign in</h3>
+          //   <button
+          //     onClick={() => {
+          //       navigate('/login', { state: { from: location.pathname } });
+          //     }}
+          //     className="signinIcon"
+          //   >
+          //     <SignInIcon size={32} weight="light" />
+          //   </button>
+          // </div>
         )}
       </div>
     </div>
