@@ -3,11 +3,15 @@ import { TrashIcon } from '@phosphor-icons/react';
 import eventService from '../services/event.service';
 import CommentsCard from './CommentsCard';
 import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import PopUpModal from './PopUpModal';
+import { toast } from 'react-toastify';
 
 export default function EventCard({ event }) {
   const navigate = useNavigate();
   const { isLoggedIn, user } = useContext(AuthContext);
+
+  const [openModal, setOpenModal] = useState(false);
 
   const categoryImages = {
     event: '/images/eventImage.jpg',
@@ -70,9 +74,20 @@ export default function EventCard({ event }) {
           <button className="btn btn-primary">Back</button>
         </Link>
         {isLoggedIn && user.name === event.createdBy.name && (
-          <button className="text-gray-500 cursor-pointer" onClick={handleDelete}>
-            <TrashIcon size={32} />
-          </button>
+          <>
+            <button
+              className="text-gray-500 cursor-pointer"
+              onClick={() => setOpenModal(true)} // ✅ fix this too
+            >
+              <TrashIcon size={32} />
+            </button>
+            <PopUpModal
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+              handlerFunction={handleDelete}
+              message="Are you sure you want to delete your event?"
+            />
+          </>
         )}
       </div>
       <CommentsCard eventId={event._id} />

@@ -20,25 +20,25 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
   const handleToLocationInput = (e) => setToLocation(e.target.value);
   const handleImageInput = (e) => setImage(e.target.value);
 
-  if (eventId) {
-    useEffect(() => {
-      eventService
-        .getEvent(eventId)
-        .then((response) => {
-          setTitle(response.data.title);
-          setDescription(response.data.description);
-          setCategory(response.data.category);
-          setTypeOfEvent(response.data.typeOfEvent);
-          setLocation(response.data.location);
-          setToLocation(response.data.toLocation);
-          setImage(response.data.image);
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error('error: failed to get event data');
-        });
-    }, []);
-  }
+  useEffect(() => {
+    if (!eventId) return;
+    eventService
+      .getEvent(eventId)
+      .then((response) => {
+        setTitle(response.data.title);
+        setDescription(response.data.description);
+        setCategory(response.data.category);
+        setTypeOfEvent(response.data.typeOfEvent);
+        setLocation(response.data.location);
+        setToLocation(response.data.toLocation);
+        setImage(response.data.image);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error('error: failed to get event data');
+      });
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

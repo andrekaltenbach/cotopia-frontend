@@ -3,10 +3,12 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
 import userService from '../services/user.service';
 import { toast } from 'react-toastify';
+import PopUpModal from './PopUpModal';
 
 export default function UserDropOut() {
   const { user, logOutUser } = useContext(AuthContext);
 
+  const [openModal, setOpenModal] = useState(false);
   const [dropdownToggle, setDropdownToggle] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -73,9 +75,15 @@ export default function UserDropOut() {
               </div>
             </div>
             <div className="menu-item">
-              <div onClick={handleDelete} className="menu-item-link border-t">
+              <div onClick={() => setOpenModal(true)} className="menu-item-link border-t">
                 Delete Account
               </div>
+              <PopUpModal
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+                handlerFunction={handleDelete}
+                message="Are you sure you want to delete your account?"
+              />
             </div>
           </div>
         </div>
