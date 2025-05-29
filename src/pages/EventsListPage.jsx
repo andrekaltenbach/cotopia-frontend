@@ -62,7 +62,11 @@ function EventsListPage() {
 
                   <div className="flex flex-col justify-center items-center">
                     {event.image ? (
-                      <img src={event.image} alt="event image" />
+                      <img
+                        src={event.image}
+                        alt="event image"
+                        className="mx-auto w-full max-h-46 object-cover rounded-t-2xl sm:w-lg"
+                      />
                     ) : (
                       <img
                         src={categoryImages[event.category]}
