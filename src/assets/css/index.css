@@ -97,7 +97,7 @@ form textarea {
 }
 
 .btn-primary {
-  @apply border-teal-600 hover:text-white hover:bg-teal-700 text-teal-600;
+  @apply border-teal-900 text-white bg-teal-900  hover:bg-teal-600 hover:border-teal-600;
 }
 
 .btn-primary-fill {
@@ -105,15 +105,15 @@ form textarea {
 }
 
 .btn-secondary {
-  @apply border-gray-400 text-gray-500 hover:text-white hover:bg-gray-400;
+  @apply border-gray-400 bg-gray-400 opacity-80 text-gray-800 hover:text-white hover:bg-gray-600 hover:border-gray-600;
 }
 
 .btn-comment {
-  @apply border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600;
+  @apply border-orange-600 bg-orange-600 text-white hover:border-orange-500 hover:bg-orange-500;
 }
 
 .btn-disabled {
-  @apply border-gray-400 text-gray-500;
+  @apply border-gray-400 bg-gray-400 opacity-50 text-gray-800;
 }
 
 /* card Style*/
