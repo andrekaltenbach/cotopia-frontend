@@ -47,7 +47,7 @@ function EventsListPage() {
           .map((event, i) => {
             return (
               <Link to={`/events/${event._id}`} key={i}>
-                <div className="card flex flex-col gap-4 w-80">
+                <div className="card flex flex-col gap-4 w-80 h-90">
                   {event.typeOfEvent === 'request' && (
                     <div className="absolute w-15 triangle bg-orange-600 text-white font-bold text-sm rounded-tl-lg">
                       <p className="absolute top-3 -left-1 -rotate-45">request</p>
@@ -75,8 +75,16 @@ function EventsListPage() {
                       />
                     )}
                     <div className="pt-4">
-                      <h2 className="mb-2">{event.title}</h2>
-                      <p>{event.description.substring(0, 30)}...</p>
+                      {event.title.length > 60 ? (
+                        <h2 className="mb-2">{event.title.substring(0, 60)}...</h2>
+                      ) : (
+                        <h2 className="mb-2">{event.title}</h2>
+                      )}
+                      {event.description.length > 60 ? (
+                        <p>{event.description.substring(0, 60)}...</p>
+                      ) : (
+                        <p>{event.description}</p>
+                      )}
                     </div>
                   </div>
                 </div>
