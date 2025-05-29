@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import eventService from '../services/event.service';
 import { toast } from 'react-toastify';
+import { PopUp } from './PopUp';
 
 export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
   const [title, setTitle] = useState('');
@@ -143,9 +144,11 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
           {title && description && category && typeOfEvent && location ? (
             <button className="btn btn-primary-fill w-30">Save</button>
           ) : (
-            <button disabled={true} className="btn btn-disabled w-30">
-              Save
-            </button>
+            <PopUp>
+              <button disabled={true} className="btn btn-disabled w-30">
+                Save
+              </button>
+            </PopUp>
           )}
           <Link to="/">
             <button

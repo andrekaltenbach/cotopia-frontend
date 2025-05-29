@@ -3,6 +3,7 @@ import authService from '../services/auth.service';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/auth.context';
+import { PopUp } from '../components/PopUp';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -67,9 +68,11 @@ export default function LoginPage() {
           {email && password ? (
             <button className="btn btn-primary-fill w-30">Login</button>
           ) : (
-            <button disabled={true} className="btn btn-disabled w-30">
-              Login
-            </button>
+            <PopUp>
+              <button disabled={true} className="btn btn-disabled w-30">
+                Login
+              </button>
+            </PopUp>
           )}
           <Link to="/">
             <button className="btn btn-secondary ml-5">Cancel</button>

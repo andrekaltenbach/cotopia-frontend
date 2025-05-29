@@ -2,6 +2,7 @@ import { useState } from 'react';
 import authService from '../services/auth.service';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { PopUp } from '../components/PopUp';
 
 export default function SignupPage() {
   const [name, setName] = useState('');
@@ -72,9 +73,11 @@ export default function SignupPage() {
           {email && password && name ? (
             <button className="btn btn-primary-fill w-30">Sign Up</button>
           ) : (
-            <button disabled={true} className="btn btn-disabled w-30">
-              Signup
-            </button>
+            <PopUp>
+              <button disabled={true} className="btn btn-disabled w-30">
+                Sign Up
+              </button>
+            </PopUp>
           )}
           <Link to="/">
             <button className="btn btn-secondary ml-5">Cancel</button>

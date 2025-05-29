@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import commentService from '../services/comment.service';
 import { toast } from 'react-toastify';
+import { PopUp } from './PopUp';
 
 export default function AddComment({ eventId, setFormStatus, reload, setReload }) {
   const [title, setTitle] = useState('');
@@ -52,26 +53,30 @@ export default function AddComment({ eventId, setFormStatus, reload, setReload }
             onChange={handleCommentTextInput}
           />
         </div>
+        <div>
+          <span className="text-red-700">*</span> required
+        </div>
 
-        {title && commentText ? (
-          <button className="btn btn-primary-fill">Save</button>
-        ) : (
-          <button disabled={true} className="btn btn-disabled">
-            Save
+        <div className="text-center mt-8">
+          {title && commentText ? (
+            <button className="btn btn-primary-fill">Save</button>
+          ) : (
+            <PopUp>
+              <button disabled={true} className="btn btn-disabled w-30">
+                Save
+              </button>
+            </PopUp>
+          )}
+          <button
+            onClick={() => {
+              setFormStatus(false);
+            }}
+            className="btn btn-secondary ml-5"
+          >
+            Cancel
           </button>
-        )}
-        <button
-          onClick={() => {
-            setFormStatus(false);
-          }}
-          className="btn btn-secondary"
-        >
-          Cancel
-        </button>
+        </div>
       </form>
-      <div>
-        <span className="text-red-700">*</span> required
-      </div>
     </div>
   );
 }
