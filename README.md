@@ -10,6 +10,7 @@ Frontend Tech-Stack:
 
 - JavaScript
 - React
+- Axios
 - Tailwind CSS
 - Vite
 - Flowbite React
