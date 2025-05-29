@@ -65,11 +65,6 @@ export default function UserDropOut() {
           <h3 className="menu-name">{user.name}</h3>
           <div className="menu-items-div">
             <div className="menu-item">
-              <NavLink to="/user/profile" className="menu-item-link">
-                Profile
-              </NavLink>
-            </div>
-            <div className="menu-item">
               <div onClick={logOutUser} className="menu-item-link">
                 <p>Logout</p>
               </div>

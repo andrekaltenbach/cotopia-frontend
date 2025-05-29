@@ -33,7 +33,7 @@ export default function AddEventCard({ reload, setReload }) {
         </IsPrivat>
       ) : (
         <div>
-          <h1 className="mb-3">create your event</h1>
+          <h2 className="mb-3">create your event</h2>
           {isLoggedIn ? (
             <button
               onClick={() => {

@@ -4,35 +4,36 @@
 
 body {
   /* font-family: 'Mulish', sans-serif; */
-  font-family: 'lato', sans-serif;
+  font-family: 'lato', sans-serif, Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  /* color: #333; */
   color: #e4e4e4;
   background-color: #fdfbee;
 }
 
 h1,
 h2,
+h3,
 a {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif, Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-  letter-spacing: 0.5px;
-}
-
-h3 {
-  font-family: 'Nunito', sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: 0.5px;
 }
 
 body {
   @apply bg-[url(/images/testImage.jpg)];
+}
+
+h1 {
+  @apply font-extrabold not-italic text-xl text-teal-600;
+}
+
+.title {
+  @apply tracking-wide text-4xl text-teal-600;
+}
+
+h2 {
+  @apply text-xl font-bold;
 }
 
 /* Header Section */

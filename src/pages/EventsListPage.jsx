@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import eventService from '../services/event.service';
-import { ImageIcon } from '@phosphor-icons/react';
 import { Link, useLocation } from 'react-router-dom';
 import AddEventCard from '../components/AddEventCard';
 import { toast } from 'react-toastify';
@@ -72,7 +71,7 @@ function EventsListPage() {
                       />
                     )}
                     <div className="pt-4">
-                      <h1>{event.title}</h1>
+                      <h2 className="mb-2">{event.title}</h2>
                       <p>{event.description.substring(0, 30)}...</p>
                     </div>
                   </div>

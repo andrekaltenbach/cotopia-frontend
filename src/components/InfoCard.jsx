@@ -1,9 +1,7 @@
 function InfoCard() {
   return (
     <div className="card text-center">
-      <h1 className="text-teal-600 font-bold mb-2">
-        Welcome to Cotopia - Imagine a Community That Truly Connects
-      </h1>
+      <h1 className="mb-2">Welcome to Cotopia - Imagine a Community That Truly Connects</h1>
       <p>
         Picture a world where neighbors support one another, where finding help, sharing resources,
         and exchanging opportunities is effortless. <br /> That's Cotopia—a place where communities

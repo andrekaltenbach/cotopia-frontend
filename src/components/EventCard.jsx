@@ -37,21 +37,21 @@ export default function EventCard({ event }) {
 
   return (
     <div className="card flex flex-col gap-4 text-center max-w-3xl">
-      {event.typeOfEvent === 'request' && (
-        <div className=" w-full bg-orange-600 text-white font-bold text-xl rounded-t-lg">
-          <p className="">request</p>
-        </div>
-      )}
-      {event.typeOfEvent === 'offer' && (
-        <div className=" w-full bg-teal-600 text-white font-bold text-xl rounded-t-lg">
-          <p className="">offer</p>
-        </div>
-      )}
-      <p>{event.category}</p>
-
+      <div>
+        {event.typeOfEvent === 'request' && (
+          <div className=" w-full bg-orange-600 rounded-t-lg">
+            <h2 className="">request</h2>
+          </div>
+        )}
+        {event.typeOfEvent === 'offer' && (
+          <div className=" w-full bg-teal-600 rounded-t-lg">
+            <h2 className="">offer</h2>
+          </div>
+        )}
+      </div>
       <div>
         {event.image ? (
-          <img src={event.image} alt="event image" className="mx-auto" />
+          <img src={event.image} alt="event image" className="mx-auto w-11/12 sm:max-w-2xl" />
         ) : (
           <img
             src={categoryImages[event.category]}
@@ -60,11 +60,15 @@ export default function EventCard({ event }) {
           />
         )}
       </div>
-      <div className="pt-4">
-        <h1>{event.title}</h1>
-        <p>{event.description}</p>
-        {event.toLocation ? <p>from: {event.location}</p> : <p>{event.location}</p>}
-        {event.toLocation && <p>to: {event.toLocation}</p>}
+      <div className="pt-4 pb-2">
+        <h2 className="mb-2">{event.title}</h2>
+        <p className="mb-2">{event.description}</p>
+        {event.toLocation ? (
+          <p className="mb-2">from: {event.location}</p>
+        ) : (
+          <p className="mb-2">{event.location}</p>
+        )}
+        {event.toLocation && <p className="mb-2">to: {event.toLocation}</p>}
         <p>{event.eventURL}</p>
         {event.createdBy?.name ? (
           <p>created by: {event.createdBy.name}</p>
@@ -74,13 +78,13 @@ export default function EventCard({ event }) {
           </p>
         )}
       </div>
-      <div className="w-full flex justify-center gap-5">
+      <div className="w-full flex justify-center items-center gap-5">
         {/* <Link to={`/events/${event.category}`}> */}
-        <Link to={`/events`}>
+        <Link to={`/events`} className="my-3">
           <button className="btn btn-primary">Back</button>
         </Link>
         {isLoggedIn && user.name === event.createdBy?.name && (
-          <>
+          <div>
             <button className="text-gray-500 cursor-pointer" onClick={() => setOpenModal(true)}>
               <TrashIcon size={32} />
             </button>
@@ -90,7 +94,7 @@ export default function EventCard({ event }) {
               handlerFunction={handleDelete}
               message="Are you sure you want to delete your event?"
             />
-          </>
+          </div>
         )}
       </div>
       <CommentsCard eventId={event._id} />

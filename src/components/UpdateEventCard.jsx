@@ -39,7 +39,7 @@ export default function UpdateEventCard({ eventId, createdBy, reload, setReload 
             </IsPrivat>
           ) : (
             <div>
-              <h1>edit event</h1>
+              <h2 className="mb-3">edit event</h2>
               {isLoggedIn && (
                 <button
                   onClick={() => {

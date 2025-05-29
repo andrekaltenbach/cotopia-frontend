@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   return (
     <div className="card max-w-3xl">
-      <h1 className="w-full text-center font-bold">Login</h1>
+      <h2 className="w-full text-center">Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="email">

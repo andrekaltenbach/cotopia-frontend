@@ -31,7 +31,7 @@ export default function CommentsCard({ eventId }) {
 
   return (
     <div className="text-center my-5 w-11/12 mx-auto">
-      <h1 className="font-bold my-8">Comments</h1>
+      <h2 className="font-bold my-8">Comments</h2>
       {comments.length === 0 ? (
         <p>No comments yet</p>
       ) : (
@@ -42,8 +42,8 @@ export default function CommentsCard({ eventId }) {
                 className="card border border-orange-600 text-center max-w-4/5"
                 key={comment._id}
               >
-                <h1>{comment.title}</h1>
-                <p>{comment.commentText}</p>
+                <h2 className="mb-2">{comment.title}</h2>
+                <p className="mb-2">{comment.commentText}</p>
                 {comment.createdBy?.name ? (
                   <p>comment by: {comment.createdBy.name}</p>
                 ) : (

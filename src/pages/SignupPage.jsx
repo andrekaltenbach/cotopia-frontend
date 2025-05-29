@@ -45,7 +45,7 @@ export default function SignupPage() {
 
   return (
     <div className="card max-w-3xl">
-      <h1 className="w-full text-center font-bold">Sign Up</h1>
+      <h2 className="w-full text-center">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="email">

@@ -6,15 +6,13 @@ export default function AboutPage() {
       <div className="mx-auto">
         {/* <div className="border-t-4 border-b-4 border-teal-600 py-4"> */}
         <div className="card text-center">
-          <h1 className="text-teal-600 font-bold mb-2">
-            About Cotopia - Bringing Communities Together
-          </h1>
+          <h1 className=" mb-2">About Cotopia - Bringing Communities Together</h1>
           <p>
             Cotopia was born from a simple yet powerful idea: to create a space where people can{' '}
             <span className="text-teal-600 font-bold">
-              connect, exchange, and collaborate— all in one place
+              connect, exchange, and collaborate— all in one place.
             </span>
-            . <br /> As countless Telegram groups emerged for local exchanges, it became clear that
+            <br /> As countless Telegram groups emerged for local exchanges, it became clear that
             something was missing: a unified platform where communities could seamlessly share
             opportunities, trade goods, find real estate, coordinate transportation, and offer help.
             That's where Cotopia comes in. <br />

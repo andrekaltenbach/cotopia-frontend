@@ -30,7 +30,7 @@ function Header() {
   return (
     <div className="Header relative flex justify-between items-center border-b-1 shadow-md">
       <Link to="/" className="flex items-center py-4 mx-5 order-2 sm:order-0">
-        <h1 className="title text-3xl text-teal-600">cotopia</h1>
+        <h1 className="title">cotopia</h1>
       </Link>
       <div className="menu" ref={menuRef}>
         <ul
