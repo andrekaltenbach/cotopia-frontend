@@ -44,7 +44,13 @@ export default function CommentsCard({ eventId }) {
               >
                 <h1>{comment.title}</h1>
                 <p>{comment.commentText}</p>
-                <p>comment by: {comment.createdBy.name}</p>
+                {comment.createdBy?.name ? (
+                  <p>comment by: {comment.createdBy.name}</p>
+                ) : (
+                  <p>
+                    comment by: <span className="italic">user deleted</span>
+                  </p>
+                )}
               </div>
             );
           })}

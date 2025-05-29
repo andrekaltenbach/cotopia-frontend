@@ -27,7 +27,7 @@ export default function UpdateEventCard({ eventId, createdBy, reload, setReload 
 
   return (
     <>
-      {user?.name === createdBy.name && (
+      {user?.name === createdBy?.name && (
         <div className="card text-center">
           {formStatus ? (
             <IsPrivat>

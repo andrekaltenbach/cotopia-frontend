@@ -31,12 +31,14 @@ export default function EventDetailsPage() {
   return (
     <div>
       <EventCard event={event} />
-      <UpdateEventCard
-        eventId={eventId}
-        createdBy={event.createdBy}
-        reload={reload}
-        setReload={setReload}
-      />
+      {event.createdBy && (
+        <UpdateEventCard
+          eventId={eventId}
+          createdBy={event.createdBy}
+          reload={reload}
+          setReload={setReload}
+        />
+      )}
     </div>
   );
 }

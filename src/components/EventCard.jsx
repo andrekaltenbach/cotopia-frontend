@@ -66,19 +66,22 @@ export default function EventCard({ event }) {
         {event.toLocation ? <p>from: {event.location}</p> : <p>{event.location}</p>}
         {event.toLocation && <p>to: {event.toLocation}</p>}
         <p>{event.eventURL}</p>
-        <p>postet by: {event.createdBy.name}</p>
+        {event.createdBy?.name ? (
+          <p>created by: {event.createdBy.name}</p>
+        ) : (
+          <p>
+            created by: <span className="italic">user deleted</span>
+          </p>
+        )}
       </div>
       <div className="w-full flex justify-center gap-5">
         {/* <Link to={`/events/${event.category}`}> */}
         <Link to={`/events`}>
           <button className="btn btn-primary">Back</button>
         </Link>
-        {isLoggedIn && user.name === event.createdBy.name && (
+        {isLoggedIn && user.name === event.createdBy?.name && (
           <>
-            <button
-              className="text-gray-500 cursor-pointer"
-              onClick={() => setOpenModal(true)} // ✅ fix this too
-            >
+            <button className="text-gray-500 cursor-pointer" onClick={() => setOpenModal(true)}>
               <TrashIcon size={32} />
             </button>
             <PopUpModal
