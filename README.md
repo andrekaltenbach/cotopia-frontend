@@ -20,8 +20,6 @@ Frontend Tech-Stack:
 
 The backend repository can be found here: [cotopia-backend](https://github.com/andrekaltenbach/cotopia-backend)
 
-![cotopia-app](image.png)
-
 ### Instructions to run this app in my computer
 
 - fork the repository
@@ -35,5 +33,8 @@ The backend repository can be found here: [cotopia-backend](https://github.com/a
 
 ### Demo
 
-This app was deployed using Netlify.
+This app was deployed using Netlify. The backend was deployed using MongoDB Atlas and render.com.
+
 You can find the deployed version here: [cotopia-app](https://cotopia-app.netlify.app/)
+
+![cotopia-app](image.png)
