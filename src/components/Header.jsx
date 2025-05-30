@@ -36,7 +36,7 @@ function Header() {
         <ul
           className={`${
             hamburgerOpen
-              ? 'absolute left-0 top-full w-full bg-orange-950 opacity-95 z-20 block'
+              ? 'absolute left-0 top-full w-full bg-gray-700 text-gray-100 opacity-95 z-20 block pl-4 rounded-2xl'
               : 'hidden'
           } sm:flex justify-between gap-4`}
         >

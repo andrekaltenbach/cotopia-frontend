@@ -69,8 +69,8 @@ export default function UserDropOut() {
                 <p>Logout</p>
               </div>
             </div>
-            <div className="menu-item">
-              <div onClick={() => setOpenModal(true)} className="menu-item-link border-t">
+            <div className="menu-item border-t">
+              <div onClick={() => setOpenModal(true)} className="menu-item-link">
                 Delete Account
               </div>
               <PopUpModal

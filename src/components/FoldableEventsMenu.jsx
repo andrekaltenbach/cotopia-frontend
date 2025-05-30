@@ -44,17 +44,17 @@ export default function FoldableEventsMenu({ setHamburgerOpen }) {
             transition
             className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
           >
-            <div className="w-screen max-w-64 sm:max-w-fit flex-auto overflow-hidden rounded-3xl bg-white text-sm/6 shadow-lg ring-1 ring-gray-900/5">
+            <div className="w-screen max-w-64 sm:max-w-fit flex-auto overflow-hidden rounded-3xl bg-gray-700 text-sm/6 shadow-lg ring-1 ring-gray-900/5">
               <div className="p-2">
                 {solutions.map((item) => (
                   <div
                     key={item.name}
-                    className="group relative flex rounded-lg py-2 px-3 hover:bg-gray-50"
+                    className="group relative flex rounded-lg py-2 px-3 hover:bg-gray-600"
                   >
                     <div>
                       <Link
                         to={item.href}
-                        className="font-bold text-teal-600"
+                        className="font-bold text-teal-500"
                         onClick={() => {
                           close();
                           setHamburgerOpen(false);
@@ -63,7 +63,7 @@ export default function FoldableEventsMenu({ setHamburgerOpen }) {
                         {item.name}
                         <span className="absolute inset-0" />
                       </Link>
-                      <p className="mt-1 text-gray-600 font-medium">{item.description}</p>
+                      <p className="mt-1 text-gray-200 font-medium">{item.description}</p>
                     </div>
                   </div>
                 ))}
