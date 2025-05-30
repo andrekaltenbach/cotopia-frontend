@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import EventCard from '../components/EventCard';
 import UpdateEventCard from '../components/UpdateEventCard';
 import { toast } from 'react-toastify';
+import { Spinner } from 'flowbite-react';
 
 export default function EventDetailsPage() {
   const [event, setEvent] = useState(null);
@@ -25,7 +26,12 @@ export default function EventDetailsPage() {
   }, [reload]);
 
   if (!event) {
-    return <div className="loader mx-auto my-55"></div>;
+    return (
+      <div className="text-center mt-32">
+        <Spinner aria-label="Large spinner example" size="xl" />
+      </div>
+    );
+    // return <div className="loader mx-auto my-55"></div>;
   }
 
   return (

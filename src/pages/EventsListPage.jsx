@@ -3,6 +3,7 @@ import eventService from '../services/event.service';
 import { Link, useLocation } from 'react-router-dom';
 import AddEventCard from '../components/AddEventCard';
 import { toast } from 'react-toastify';
+import { Spinner } from 'flowbite-react';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
@@ -36,7 +37,12 @@ function EventsListPage() {
   }, [location.search, reload]);
 
   if (!events) {
-    return <div className="loader mx-auto my-55"></div>;
+    return (
+      <div className="text-center mt-32">
+        <Spinner aria-label="Large spinner example" size="xl" />
+      </div>
+    );
+    // return <div className="loader mx-auto my-55"></div>;
   }
 
   return (
