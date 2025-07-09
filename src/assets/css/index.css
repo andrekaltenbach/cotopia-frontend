@@ -3,13 +3,12 @@
 @source '../../../.flowbite-react/class-list.json';
 
 body {
-  /* font-family: 'Mulish', sans-serif; */
   font-family: 'lato', sans-serif, Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #e4e4e4;
-  background-color: #fdfbee;
+  color: #364153;
+  background-color: #f3f4f6;
 }
 
 h1,
@@ -20,16 +19,16 @@ a {
   font-optical-sizing: auto;
 }
 
-body {
+/* body {
   @apply bg-[url(/images/testImage.jpg)];
-}
+} */
 
 h1 {
   @apply font-extrabold not-italic text-xl text-teal-600;
 }
 
 .title {
-  @apply tracking-wide text-4xl text-teal-600;
+  @apply tracking-wide text-4xl text-teal-300;
 }
 
 h2 {
@@ -38,34 +37,11 @@ h2 {
 
 /* Header Section */
 .Header ul li {
-  @apply text-lg font-semibold hover:text-teal-600;
+  @apply text-lg font-semibold hover:text-teal-300;
 }
 
 .Header ul li a.active {
-  @apply text-teal-600;
-}
-
-@import 'tailwindcss';
-
-/* Tables Initial Style  */
-table {
-  @apply w-full min-w-full table-auto;
-}
-
-table thead {
-  @apply bg-blue-50 text-blue-800;
-}
-
-table thead th {
-  @apply text-center py-4 px-2 border-b-2 border-blue-200 font-bold first:rounded-tl-xl last:rounded-tr-xl whitespace-nowrap text-sm;
-}
-
-table tbody td {
-  @apply text-center py-2.5 px-2 border-b border-blue-100 text-blue-900 whitespace-nowrap text-sm;
-}
-
-table tbody tr:hover td {
-  @apply text-black bg-blue-50/50;
+  @apply text-teal-300;
 }
 
 /* Form Initial Style */
@@ -98,11 +74,7 @@ form textarea {
 }
 
 .btn-primary {
-  @apply border-teal-900 text-white bg-teal-900  hover:bg-teal-600 hover:border-teal-600;
-}
-
-.btn-primary-fill {
-  @apply bg-teal-600 border-teal-600 text-white hover:bg-teal-600/80;
+  @apply border-amber-600 text-gray-100 bg-amber-600  hover:bg-amber-500 hover:border-amber-500;
 }
 
 .btn-secondary {
@@ -110,7 +82,7 @@ form textarea {
 }
 
 .btn-comment {
-  @apply border-orange-600 bg-orange-600 text-white hover:border-orange-500 hover:bg-orange-500;
+  @apply border-blue-950 bg-blue-950 text-white hover:border-blue-800 hover:bg-blue-800;
 }
 
 .btn-disabled {
@@ -119,8 +91,7 @@ form textarea {
 
 /* card Style*/
 .card {
-  /* @apply border-2 border-teal-600 rounded-lg shadow-xl p-5 text-center my-5 mx-auto; */
-  @apply shadow-2xl rounded-lg shadow-xl p-5 my-5 mx-auto;
+  @apply rounded-lg my-5 mx-auto;
 }
 
 .triangle {
@@ -129,41 +100,9 @@ form textarea {
 }
 
 /* custom dropdown */
-.relative-div {
-  position: relative;
-  margin: 0 20px;
-}
-
-.relative-div .user-profile {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fe4f2d;
-  color: #e5e7eb;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  font-size: 15px;
-}
-
 .relative-div .custom-profile-dropdown {
-  width: 200px;
-  position: absolute;
-  top: 60px;
-  right: -10px;
-  padding: 10px 20px;
-  background-color: #374151;
   box-sizing: 0 5px 25px rgb(0 0 0 / 10%);
-  border-radius: 15px;
   transition: 0.5s;
-  border: 1px solid #374151;
-  height: fit-content;
   visibility: hidden;
   opacity: 0;
 }
@@ -174,49 +113,16 @@ form textarea {
 }
 
 .relative-div .custom-profile-dropdown::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  right: 24px;
-  width: 20px;
-  height: 20px;
-  background-color: #374151;
-  transform: rotate(45deg);
-  border-top: 1px solid #374151;
-  border-left: 1px solid #374151;
-}
-
-.custom-profile-dropdown h3.menu-name {
-  text-align: center;
-  width: 100%;
-  font-size: 18px;
-  padding: 20px 0;
-  font-weight: 600;
-  line-height: 1.2em;
-  color: #e5e7eb;
-  /* border-bottom: 1px solid #333; */
-}
-
-.menu-items-div {
-  width: 100%;
-}
-
-.menu-item {
-  color: #e5e7eb;
+  @apply absolute -top-1.5 right-4.5 w-5 h-5 bg-teal-800 content-[''] border-t-teal-800 border-l-teal-800 transform-[rotate(45deg)];
 }
 
 .menu-item-link {
-  padding: 10px 0;
-  width: 100%;
-  cursor: pointer;
-  font-size: 13px;
-  text-align: left;
-  color: #e5e7eb;
+  @apply py-2.5 w-full cursor-pointer text-sm text-left text-gray-200;
 }
 
 .menu-item .menu-item-link.active,
 .menu-item .menu-item-link:hover {
-  color: #14b8a6;
+  @apply text-teal-300;
 }
 
 /* spinner */

@@ -22,7 +22,7 @@ function BrowseEventsCard() {
   };
   return (
     <div className="card">
-      <h2 className="mb-5 w-full text-center">Browse events by category</h2>
+      <h2 className="mb-5 w-full text-center">Choose a Category</h2>
       <Carousel
         swipeable={false}
         draggable={false}

@@ -66,7 +66,7 @@ export default function LoginPage() {
 
         <div className="text-center mt-8">
           {email && password ? (
-            <button className="btn btn-primary-fill w-30">Login</button>
+            <button className="btn btn-primary w-30">Login</button>
           ) : (
             <PopUp>
               <button disabled={true} className="btn btn-disabled w-30">

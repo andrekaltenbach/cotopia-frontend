@@ -38,10 +38,7 @@ export default function CommentsCard({ eventId }) {
         <div>
           {comments.map((comment) => {
             return (
-              <div
-                className="card border border-orange-600 text-center max-w-4/5"
-                key={comment._id}
-              >
+              <div className="card text-center max-w-4/5" key={comment._id}>
                 <h2 className="mb-2">{comment.title}</h2>
                 <p className="mb-2">{comment.commentText}</p>
                 {comment.createdBy?.name ? (

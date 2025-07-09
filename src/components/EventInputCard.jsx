@@ -142,7 +142,7 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
         </div>
         <div className="text-center mt-8">
           {title && description && category && typeOfEvent && location ? (
-            <button className="btn btn-primary-fill w-30">Save</button>
+            <button className="btn btn-primary w-30">Save</button>
           ) : (
             <PopUp>
               <button disabled={true} className="btn btn-disabled w-30">

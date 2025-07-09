@@ -36,28 +36,24 @@ export default function EventCard({ event }) {
   };
 
   return (
-    <div className="card flex flex-col gap-4 text-center max-w-3xl">
+    <div className="card flex flex-col gap-4 text-center max-w-2xl">
       <div>
         {event.typeOfEvent === 'request' && (
-          <div className=" w-full bg-orange-600 rounded-t-lg">
-            <h2 className="">request</h2>
+          <div className=" w-full bg-yellow-700 rounded-t-lg">
+            <h2 className="text-gray-200">request</h2>
           </div>
         )}
         {event.typeOfEvent === 'offer' && (
           <div className=" w-full bg-teal-600 rounded-t-lg">
-            <h2 className="">offer</h2>
+            <h2 className="text-gray-200">offer</h2>
           </div>
         )}
       </div>
       <div>
         {event.image ? (
-          <img src={event.image} alt="event image" className="mx-auto w-11/12 sm:max-w-2xl" />
+          <img src={event.image} alt="event image" className="mx-auto w-full" />
         ) : (
-          <img
-            src={categoryImages[event.category]}
-            alt="event image"
-            className="mx-auto w-11/12 sm:max-w-2xl"
-          />
+          <img src={categoryImages[event.category]} alt="event image" className="mx-auto w-full" />
         )}
       </div>
       <div className="pt-4 pb-2">

@@ -48,8 +48,12 @@ export default function UserDropOut() {
   };
 
   return (
-    <div className="relative-div" ref={dropdownRef}>
-      <button type="button" className="user-profile" onClick={handleDropdownToggle}>
+    <div className="relative-div relative mx-5 my-0" ref={dropdownRef}>
+      <button
+        type="button"
+        className="user-profile w-10 h-10 rounded-full overflow-hidden border-none outline-none cursor-pointer flex justify-center items-center bg-amber-600 text-gray-200 font-semibold tracking-widest text-base"
+        onClick={handleDropdownToggle}
+      >
         {user?.name &&
           user.name
             .split(' ')
@@ -61,10 +65,16 @@ export default function UserDropOut() {
             .join('')}
       </button>
       {user && (
-        <div className={`custom-profile-dropdown${dropdownToggle ? ' active' : ''}`}>
-          <h3 className="menu-name">{user.name}</h3>
-          <div className="menu-items-div">
-            <div className="menu-item">
+        <div
+          className={`custom-profile-dropdown${
+            dropdownToggle ? ' active' : ''
+          } bg-teal-800 border-teal-800 rounded-2xl w-52 h-fit absolute top-15 -right-2.5 p-3`}
+        >
+          <h3 className="menu-name text-center w-full text-lg py-5 font-semibold leading-[1.2em] text-gray-200">
+            {user.name}
+          </h3>
+          <div className="menu-items-div w-full">
+            <div className="menu-item text-gray-200">
               <div onClick={logOutUser} className="menu-item-link">
                 <p>Logout</p>
               </div>

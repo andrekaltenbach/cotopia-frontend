@@ -59,7 +59,7 @@ export default function AddComment({ eventId, setFormStatus, reload, setReload }
 
         <div className="text-center mt-8">
           {title && commentText ? (
-            <button className="btn btn-primary-fill">Save</button>
+            <button className="btn btn-comment">Save</button>
           ) : (
             <PopUp>
               <button disabled={true} className="btn btn-disabled w-30">

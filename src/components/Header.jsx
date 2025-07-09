@@ -1,6 +1,5 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { SignInIcon } from '@phosphor-icons/react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
 import FoldableEventsMenu from './FoldableEventsMenu';
 import UserDropOut from './UserDropOut';
@@ -28,7 +27,7 @@ function Header() {
   }, [hamburgerOpen]);
 
   return (
-    <div className="Header relative flex justify-between items-center border-b-1 shadow-md">
+    <div className="Header bg-teal-800 relative flex justify-between items-center border-b-1 shadow-md">
       <Link to="/" className="flex items-center py-4 mx-5 order-2 sm:order-0">
         <h1 className="title">cotopia</h1>
       </Link>
@@ -36,9 +35,9 @@ function Header() {
         <ul
           className={`${
             hamburgerOpen
-              ? 'absolute left-0 top-full w-full bg-gray-700 text-gray-100 opacity-95 z-20 block pl-4 rounded-2xl'
+              ? 'absolute left-0 top-full w-full bg-teal-800 text-gray-200 opacity-95 z-20 block pl-4 rounded-b-lg'
               : 'hidden'
-          } sm:flex justify-between gap-4`}
+          } sm:flex justify-between gap-4 text-gray-200`}
         >
           <li>
             <NavLink to="/" onClick={() => setHamburgerOpen(false)}>
@@ -68,20 +67,9 @@ function Header() {
               }}
               className="signinIcon"
             >
-              <h3>sign in</h3>
+              <h3 className="text-gray-200 cursor-pointer">sign in</h3>
             </button>
           </div>
-          // <div className="mx-5 flex flex-row gap-2 items-center hover:text-teal-600 cursor-pointer">
-          //   <h3 className=" hidden sm:block">sign in</h3>
-          //   <button
-          //     onClick={() => {
-          //       navigate('/login', { state: { from: location.pathname } });
-          //     }}
-          //     className="signinIcon"
-          //   >
-          //     <SignInIcon size={32} weight="light" />
-          //   </button>
-          // </div>
         )}
       </div>
     </div>
