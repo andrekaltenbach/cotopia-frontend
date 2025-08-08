@@ -1,18 +1,16 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
-import userService from '../services/user.service';
-import { toast } from 'react-toastify';
-import PopUpModal from './PopUpModal';
+// import userService from '../services/user.service';
+// import { toast } from 'react-toastify';
+// import PopUpModal from './PopUpModal';
 
 export default function UserDropOut() {
   const { user, logOutUser } = useContext(AuthContext);
 
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
   const [dropdownToggle, setDropdownToggle] = useState(false);
   const dropdownRef = useRef(null);
-
-  const navigate = useNavigate();
 
   const handleDropdownToggle = () => {
     setDropdownToggle(!dropdownToggle);
@@ -31,21 +29,21 @@ export default function UserDropOut() {
     };
   });
 
-  const handleDelete = () => {
-    userService
-      .deleteUser(user._id)
-      .then((response) => {
-        console.log('User account deleted', response.data);
-        toast.success('User account deleted');
-        handleDropdownToggle();
-        logOutUser();
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log('error: ', err);
-        toast.error('error: failed to delete user account');
-      });
-  };
+  // const handleDelete = () => {
+  //   userService
+  //     .deleteUser(user._id)
+  //     .then((response) => {
+  //       console.log('User account deleted', response.data);
+  //       toast.success('User account deleted');
+  //       handleDropdownToggle();
+  //       logOutUser();
+  //       navigate('/');
+  //     })
+  //     .catch((err) => {
+  //       console.log('error: ', err);
+  //       toast.error('error: failed to delete user account');
+  //     });
+  // };
 
   return (
     <div className="relative-div relative mx-5 my-0" ref={dropdownRef}>
@@ -75,11 +73,19 @@ export default function UserDropOut() {
           </h3>
           <div className="menu-items-div w-full">
             <div className="menu-item text-gray-200">
+              <div className="menu-item-link">
+                <NavLink to="/profile">
+                  <p>View Profile</p>
+                </NavLink>
+              </div>
+            </div>
+            <div className="menu-item text-gray-200">
               <div onClick={logOutUser} className="menu-item-link">
                 <p>Logout</p>
               </div>
             </div>
-            <div className="menu-item border-t">
+
+            {/* <div className="menu-item border-t">
               <div onClick={() => setOpenModal(true)} className="menu-item-link">
                 Delete Account
               </div>
@@ -89,7 +95,7 @@ export default function UserDropOut() {
                 handlerFunction={handleDelete}
                 message="Are you sure you want to delete your account?"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       )}
