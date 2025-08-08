@@ -11,6 +11,8 @@ import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AboutPage from './pages/AboutPage';
 import IsAnon from './components/IsAnon';
+import UserProfilePage from './pages/UserProfilePage';
+import IsPrivat from './components/IsPrivat';
 
 function App() {
   return (
@@ -21,6 +23,14 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/events" element={<EventsListPage />} />
           <Route path="/events/:eventId" element={<EventDetailsPage />} />
+          <Route
+            path="/profile"
+            element={
+              <IsPrivat>
+                <UserProfilePage />
+              </IsPrivat>
+            }
+          />
           <Route
             path="/signup"
             element={
