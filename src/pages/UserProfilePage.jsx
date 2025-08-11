@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Spinner } from 'flowbite-react';
 import { AuthContext } from '../context/auth.context';
 import PopUpModal from '../components/PopUpModal';
+import UserPosts from '../components/UserPosts';
 
 export default function UserProfilePage() {
   const { user, logOutUser } = useContext(AuthContext);
@@ -55,8 +56,11 @@ export default function UserProfilePage() {
         <p>{userData.email}</p>
         <p>{userData._id}</p>
       </div>
+      <div>
+        <UserPosts />
+      </div>
       <div className="mt-10">
-        <div onClick={() => setOpenModal(true)} className="cursor-pointer text-red-700">
+        <div onClick={() => setOpenModal(true)} className="cursor-pointer text-red-700 w-fit">
           Delete Account
         </div>
         <PopUpModal

@@ -73,7 +73,7 @@ export default function UserDropOut() {
           </h3>
           <div className="menu-items-div w-full">
             <div className="menu-item text-gray-200">
-              <div className="menu-item-link">
+              <div className="menu-item-link" onClick={handleDropdownToggle}>
                 <NavLink to="/profile">
                   <p>View Profile</p>
                 </NavLink>
