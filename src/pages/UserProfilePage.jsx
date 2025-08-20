@@ -49,17 +49,17 @@ export default function UserProfilePage() {
   };
 
   return (
-    <>
-      <h1>{`Hello ${user.name}`}</h1>
+    <div className="flex flex-col gap-6">
+      <h1 className="mx-auto mt-10">{`Hello ${user.name}`}</h1>
       <div>
         <h2>Your Data</h2>
+        <p>{userData.name}</p>
         <p>{userData.email}</p>
-        <p>{userData._id}</p>
       </div>
       <div>
         <UserPosts />
       </div>
-      <div className="mt-10">
+      <div className="mt-10 py-10 border-t flex justify-end">
         <div onClick={() => setOpenModal(true)} className="cursor-pointer text-red-700 w-fit">
           Delete Account
         </div>
@@ -70,6 +70,6 @@ export default function UserProfilePage() {
           message="Are you sure you want to delete your account?"
         />
       </div>{' '}
-    </>
+    </div>
   );
 }
