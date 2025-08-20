@@ -29,22 +29,6 @@ export default function UserDropOut() {
     };
   });
 
-  // const handleDelete = () => {
-  //   userService
-  //     .deleteUser(user._id)
-  //     .then((response) => {
-  //       console.log('User account deleted', response.data);
-  //       toast.success('User account deleted');
-  //       handleDropdownToggle();
-  //       logOutUser();
-  //       navigate('/');
-  //     })
-  //     .catch((err) => {
-  //       console.log('error: ', err);
-  //       toast.error('error: failed to delete user account');
-  //     });
-  // };
-
   return (
     <div className="relative-div relative mx-5 my-0" ref={dropdownRef}>
       <button
@@ -66,36 +50,24 @@ export default function UserDropOut() {
         <div
           className={`custom-profile-dropdown${
             dropdownToggle ? ' active' : ''
-          } bg-teal-800 border-teal-800 rounded-2xl w-52 h-fit absolute top-15 -right-2.5 p-3`}
+          } bg-gray-700 border-gray-700 rounded-2xl min-w-52 h-fit absolute top-14 -right-2.5 px-2 py-3`}
         >
-          <h3 className="menu-name text-center w-full text-lg py-5 font-semibold leading-[1.2em] text-gray-200">
+          <h3 className="menu-name text-center w-full text-lg py-3 font-semibold leading-[1.2em] text-teal-500">
             {user.name}
           </h3>
           <div className="menu-items-div w-full">
-            <div className="menu-item text-gray-200">
+            <div className="menu-item">
               <div className="menu-item-link" onClick={handleDropdownToggle}>
                 <NavLink to="/profile">
-                  <p>View Profile</p>
+                  <p className="menu-item-text">View Profile</p>
                 </NavLink>
               </div>
             </div>
-            <div className="menu-item text-gray-200">
+            <div className="menu-item">
               <div onClick={logOutUser} className="menu-item-link">
-                <p>Logout</p>
+                <p className="menu-item-text">Logout</p>
               </div>
             </div>
-
-            {/* <div className="menu-item border-t">
-              <div onClick={() => setOpenModal(true)} className="menu-item-link">
-                Delete Account
-              </div>
-              <PopUpModal
-                openModal={openModal}
-                setOpenModal={setOpenModal}
-                handlerFunction={handleDelete}
-                message="Are you sure you want to delete your account?"
-              />
-            </div> */}
           </div>
         </div>
       )}

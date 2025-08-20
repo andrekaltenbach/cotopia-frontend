@@ -37,7 +37,7 @@ h2 {
 
 /* Header Section */
 .Header ul li {
-  @apply text-lg font-semibold hover:text-teal-300;
+  @apply sm:text-lg sm:font-semibold hover:bg-gray-300/20 sm:hover:text-teal-300;
 }
 
 .Header ul li a.active {
@@ -109,20 +109,24 @@ form textarea {
 
 .relative-div .custom-profile-dropdown.active {
   visibility: visible;
-  opacity: 0.95;
+  opacity: 1;
 }
 
-.relative-div .custom-profile-dropdown::before {
-  @apply absolute -top-1.5 right-4.5 w-5 h-5 bg-teal-800 content-[''] border-t-teal-800 border-l-teal-800 transform-[rotate(45deg)];
-}
+/* .relative-div .custom-profile-dropdown::before {
+  @apply absolute -top-1.5 right-4.5 w-5 h-5 bg-gray-700 content-[''] border-t-gray-700 border-l-gray-700 transform-[rotate(45deg)];
+} */
 
 .menu-item-link {
-  @apply py-2.5 w-full cursor-pointer text-sm text-left text-gray-200;
+  @apply py-1 w-full cursor-pointer text-sm text-left text-gray-200;
+}
+
+.menu-item-text {
+  @apply px-2 py-1;
 }
 
 .menu-item .menu-item-link.active,
 .menu-item .menu-item-link:hover {
-  @apply text-teal-300;
+  @apply active:bg-amber-50 hover:bg-gray-400/25 rounded-lg;
 }
 
 /* spinner */
