@@ -37,7 +37,7 @@ h2 {
 
 /* Header Section */
 .Header ul li {
-  @apply sm:text-lg sm:font-semibold hover:bg-gray-300/20 rounded-lg p-2 sm:hover:text-teal-300;
+  @apply sm:text-lg sm:font-semibold hover:bg-gray-300/20 rounded-lg p-2;
 }
 
 .Header ul li a.active {

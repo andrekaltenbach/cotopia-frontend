@@ -39,16 +39,24 @@ function Header() {
               : 'hidden'
           } sm:flex sm:justify-between sm:gap-4 text-gray-200`}
         >
-          <li className="">
-            <NavLink to="/" onClick={() => setHamburgerOpen(false)}>
+          <li>
+            <NavLink
+              to="/"
+              onClick={() => setHamburgerOpen(false)}
+              className="block w-full sm:w-fit"
+            >
               Home
             </NavLink>
           </li>
-          <li>
+          <li className="w-full cursor-pointer sm:w-fit sm:cursor-default">
             <FoldableEventsMenu setHamburgerOpen={setHamburgerOpen} />
           </li>
           <li>
-            <NavLink to="/about" onClick={() => setHamburgerOpen(false)}>
+            <NavLink
+              to="/about"
+              onClick={() => setHamburgerOpen(false)}
+              className="block w-full sm:w-fit"
+            >
               About
             </NavLink>
           </li>
