@@ -35,11 +35,11 @@ function Header() {
         <ul
           className={`${
             hamburgerOpen
-              ? 'absolute left-0 top-full w-full bg-gray-700 text-gray-200 z-20 block pl-4 rounded-b-lg'
+              ? 'absolute left-0 top-full w-full bg-gray-700 text-gray-200 z-20 block p-2 rounded-b-lg'
               : 'hidden'
-          } sm:flex justify-between gap-4 text-gray-200`}
+          } sm:flex sm:justify-between sm:gap-4 text-gray-200`}
         >
-          <li>
+          <li className="">
             <NavLink to="/" onClick={() => setHamburgerOpen(false)}>
               Home
             </NavLink>
