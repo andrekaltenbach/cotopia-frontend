@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import eventService from '../services/event.service';
 import { useParams } from 'react-router-dom';
 import EventCard from '../components/EventCard';
-import UpdateEventCard from '../components/UpdateEventCard';
 import { toast } from 'react-toastify';
 import { Spinner } from 'flowbite-react';
 
@@ -31,20 +30,11 @@ export default function EventDetailsPage() {
         <Spinner aria-label="Large spinner example" size="xl" />
       </div>
     );
-    // return <div className="loader mx-auto my-55"></div>;
   }
 
   return (
     <div>
-      <EventCard event={event} />
-      {event.createdBy && (
-        <UpdateEventCard
-          eventId={eventId}
-          createdBy={event.createdBy}
-          reload={reload}
-          setReload={setReload}
-        />
-      )}
+      <EventCard event={event} reload={reload} setReload={setReload} />
     </div>
   );
 }

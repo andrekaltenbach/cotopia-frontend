@@ -58,7 +58,6 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
 
   return (
     <div>
-      <h1 className="w-full text-center font-bold">Create new event</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="title">
