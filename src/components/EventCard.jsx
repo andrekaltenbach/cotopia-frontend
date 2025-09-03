@@ -74,13 +74,16 @@ export default function EventCard({ event, reload, setReload }) {
           </p>
         )}
       </div>
-      <div className="w-full flex justify-center items-center gap-5">
-        <Link to={`/events?category=${event.category}`} className="my-3">
-          <button className="btn btn-primary">Back</button>
+      <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-5 ">
+        <Link
+          to={`/events?category=${event.category}`}
+          className="my-3 w-5/6 mx-auto sm:w-min sm:ml-0 sm:mr-auto"
+        >
+          <button className="btn btn-primary w-full sm:w-auto">Back</button>
         </Link>
 
         {isLoggedIn && user.name === event.createdBy?.name && (
-          <div className="flex gap-4">
+          <div className="flex justify-between w-5/6 sm:w-auto mx-auto sm:mr-0 gap-8">
             <UpdateEventModal
               eventId={event._id}
               createdBy={event.createdBy}
