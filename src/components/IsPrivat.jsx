@@ -15,7 +15,7 @@ function IsPrivat({ children }) {
     );
   // if (isLoading) return <div className="loader mx-auto my-100"></div>;
   if (!isLoggedIn) {
-    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   } else {
     return children;
   }

@@ -8,7 +8,7 @@ import PopUpModal from './PopUpModal';
 import { toast } from 'react-toastify';
 import { UpdateEventModal } from './UpdateEventModal';
 
-export default function EventCard({ event, reload, setReload }) {
+export default function EventCard({ event, onEventUpdated }) {
   const navigate = useNavigate();
   const { isLoggedIn, user } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
@@ -21,18 +21,15 @@ export default function EventCard({ event, reload, setReload }) {
     transportation: '/images/transportImage.jpg',
   };
 
-  const handleDelete = () => {
-    eventService
-      .deleteEvent(event._id)
-      .then((response) => {
-        console.log('Event deleted');
-        toast.success('event deleted');
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log('error: ', err);
-        toast.error('error: failed to delete event');
-      });
+  const handleDelete = async () => {
+    try {
+      await eventService.deleteEvent(event._id);
+      toast.success('Event deleted successfully');
+      navigate('/');
+    } catch (err) {
+      console.log('error: ', err);
+      toast.error('error: failed to delete event');
+    }
   };
 
   return (
@@ -84,12 +81,7 @@ export default function EventCard({ event, reload, setReload }) {
 
         {isLoggedIn && user.name === event.createdBy?.name && (
           <div className="flex justify-between w-5/6 sm:w-auto mx-auto sm:mr-0 gap-8">
-            <UpdateEventModal
-              eventId={event._id}
-              createdBy={event.createdBy}
-              reload={reload}
-              setReload={setReload}
-            />
+            <UpdateEventModal eventId={event._id} onEventUpdated={onEventUpdated} />
             <TrashIcon
               size={32}
               className="text-gray-500 cursor-pointer hover:text-red-500 hover:animate-pulse"

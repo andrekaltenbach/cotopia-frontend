@@ -1,14 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
-import eventService from '../services/event.service';
-import { toast } from 'react-toastify';
+import { useState } from 'react';
 import { Spinner } from 'flowbite-react';
-import { AuthContext } from '../context/auth.context';
 import { Link } from 'react-router-dom';
 
-export default function UserPosts() {
-  const { user } = useContext(AuthContext);
-  const [userPosts, setUserPosts] = useState(null);
-
+export default function UserPosts({ userPosts }) {
   const categoryImages = {
     event: '/images/eventImage.jpg',
     help: '/images/helpImage.jpg',
@@ -16,20 +10,6 @@ export default function UserPosts() {
     trade: '/images/tradeImage.jpg',
     transportation: '/images/transportImage.jpg',
   };
-
-  useEffect(() => {
-    if (!user?._id) return;
-
-    const query = { createdBy: user._id };
-
-    eventService
-      .getAllEvents(query)
-      .then((response) => setUserPosts(response.data))
-      .catch((err) => {
-        console.log('err: ', err);
-        toast.error('error: failed to load user posts');
-      });
-  }, [user]);
 
   if (!userPosts) {
     return (

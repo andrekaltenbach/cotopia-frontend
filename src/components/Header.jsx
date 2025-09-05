@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/auth.context';
 import FoldableEventsMenu from './FoldableEventsMenu';
@@ -9,6 +9,7 @@ function Header() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const menuRef = useRef(null);
 
   const toggleHamburger = () => {
@@ -71,7 +72,7 @@ function Header() {
           <div className="mx-5 hover:text-teal-600 cursor-pointer">
             <button
               onClick={() => {
-                navigate('/login', { state: { from: location.pathname } });
+                navigate('/login', { state: { from: location } });
               }}
               className="signinIcon"
             >

@@ -3,14 +3,14 @@ import commentService from '../services/comment.service';
 import { toast } from 'react-toastify';
 import { PopUp } from './PopUp';
 
-export default function AddComment({ eventId, setFormStatus, reload, setReload }) {
+export default function AddComment({ eventId, setFormStatus, onCommentAdded }) {
   const [title, setTitle] = useState('');
   const [commentText, setCommentText] = useState('');
 
   const handleTitleInput = (e) => setTitle(e.target.value);
   const handleCommentTextInput = (e) => setCommentText(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const requestBody = {
@@ -18,17 +18,17 @@ export default function AddComment({ eventId, setFormStatus, reload, setReload }
       commentText,
     };
 
-    commentService
-      .createComment(eventId, requestBody)
-      .then((response) => {
-        setFormStatus(false);
-        toast.success('add comment successful');
-        reload ? setReload(false) : setReload(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error('error: failed to add comment');
-      });
+    try {
+      await commentService.createComment(eventId, requestBody);
+      setFormStatus(false);
+      toast.success('Comment added successfully!');
+      onCommentAdded(eventId);
+    } catch (err) {
+      console.error('Failed to add comment:', err);
+      const errorMessage =
+        err.response?.data?.message || 'Failed to add comment. Please try again.';
+      toast.error(errorMessage);
+    }
   };
 
   return (
@@ -68,6 +68,7 @@ export default function AddComment({ eventId, setFormStatus, reload, setReload }
             </PopUp>
           )}
           <button
+            type="button"
             onClick={() => {
               setFormStatus(false);
             }}

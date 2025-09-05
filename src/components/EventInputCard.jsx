@@ -22,10 +22,11 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
   const handleImageInput = (e) => setImage(e.target.value);
 
   useEffect(() => {
+    // Refactor to async/await
     if (!eventId) return;
-    eventService
-      .getEvent(eventId)
-      .then((response) => {
+    const fetchEventData = async () => {
+      try {
+        const response = await eventService.getEvent(eventId);
         setTitle(response.data.title);
         setDescription(response.data.description);
         setCategory(response.data.category);
@@ -33,12 +34,13 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
         setLocation(response.data.location);
         setToLocation(response.data.toLocation);
         setImage(response.data.image);
-      })
-      .catch((err) => {
+      } catch (err) {
         console.log(err);
         toast.error('error: failed to get event data');
-      });
-  }, []);
+      }
+    };
+    fetchEventData();
+  }, [eventId]); // Add eventId to dependency array
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -149,16 +151,15 @@ export default function EventInputCard({ setFormStatus, apiRequest, eventId }) {
               </button>
             </PopUp>
           )}
-          <Link to="/">
-            <button
-              onClick={() => {
-                setFormStatus(false);
-              }}
-              className="btn btn-secondary ml-5"
-            >
-              Cancel
-            </button>
-          </Link>
+          <button
+            type="button" // Add type="button" to prevent form submission
+            onClick={() => {
+              setFormStatus(false);
+            }}
+            className="btn btn-secondary ml-5"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

@@ -10,45 +10,50 @@ function AuthProviderWrapper(props) {
 
   const storeToken = (token) => {
     localStorage.setItem('authToken', token);
-    authenticateUser();
   };
 
-  const authenticateUser = () => {
-    const storedToken = localStorage.getItem('authToken');
+  const resetAuthState = () => {
+    setIsLoggedIn(false);
+    setIsLoading(false);
+    setUser(null);
+  };
 
+  const authenticateUser = async () => {
+    const storedToken = localStorage.getItem('authToken');
     if (storedToken) {
-      authService
-        .verify()
-        .then((response) => {
-          const user = response.data;
-          setIsLoggedIn(true);
-          setIsLoading(false);
-          setUser(user);
-        })
-        .catch((error) => {
-          setIsLoggedIn(false);
-          setIsLoading(false);
-          setUser(null);
-        });
+      // Set loading to true whenever we start a token verification
+      setIsLoading(true);
+      try {
+        const response = await authService.verify();
+        const user = response.data;
+        setIsLoggedIn(true);
+        setIsLoading(false);
+        setUser(user);
+      } catch (error) {
+        resetAuthState();
+        // Re-throw the error so components calling this function can handle it
+        throw error;
+      }
     } else {
-      setIsLoggedIn(false);
-      setIsLoading(false);
-      setUser(null);
+      resetAuthState();
     }
   };
 
-  const removeToken = () => {
-    localStorage.removeItem('authToken');
-  };
+  // const removeToken = () => {
+  //   localStorage.removeItem('authToken');
+  // };
 
   const logOutUser = () => {
-    removeToken();
-    //update state variables
-    authenticateUser();
+    localStorage.removeItem('authToken');
+    resetAuthState();
   };
 
   useEffect(() => {
-    authenticateUser();
+    // We add a .catch() to prevent "unhandled promise rejection" warnings
+    // if the initial token verification fails.
+    authenticateUser().catch(() => {
+      // The authenticateUser function already handles resetting the state.
+    });
   }, []);
 
   return (

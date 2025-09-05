@@ -4,26 +4,28 @@ import AddComment from './AddComment';
 import IsPrivat from './IsPrivat';
 import { AuthContext } from '../context/auth.context';
 import { toast } from 'react-toastify';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function CommentsCard({ eventId }) {
   const [comments, setComments] = useState(null);
   const [formStatus, setFormStatus] = useState(false);
-  const [reload, setReload] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const getComments = (id) => {
-    commentService
-      .getAllComments(id)
-      .then((response) => setComments(response.data))
-      .catch((err) => {
-        console.log(err);
-        toast.error('error: failed to load comments');
-      });
+  const getComments = async (id) => {
+    try {
+      const response = await commentService.getAllComments(id);
+      setComments(response.data);
+    } catch (err) {
+      console.log(err);
+      toast.error('error: failed to load comments');
+    }
   };
 
   useEffect(() => {
     getComments(eventId);
-  }, [reload]);
+  }, [eventId]);
 
   if (!comments) {
     return <p>Comments Loading...</p>;
@@ -58,26 +60,18 @@ export default function CommentsCard({ eventId }) {
           <AddComment
             eventId={eventId}
             setFormStatus={setFormStatus}
-            reload={reload}
-            setReload={setReload}
+            onCommentAdded={getComments}
           />
         </IsPrivat>
       ) : (
         <div className="text-center my-8">
           {isLoggedIn ? (
-            <button
-              onClick={() => {
-                setFormStatus(true);
-              }}
-              className="btn btn-comment"
-            >
+            <button onClick={() => setFormStatus(true)} className="btn btn-comment">
               Comment Event
             </button>
           ) : (
             <button
-              onClick={() => {
-                setFormStatus(true);
-              }}
+              onClick={() => navigate('/login', { state: { from: location } })}
               className="btn btn-secondary"
             >
               login to comment event

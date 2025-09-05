@@ -9,39 +9,38 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { storeToken } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from || '/';
+  // Get the full location to redirect to after login. Default to '/profile'.
+  const from = location.state?.from || '/profile';
 
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const requestBody = { email, password };
 
-    authService
-      .login(requestBody)
-      .then((response) => {
-        const authToken = response.data.authToken;
-        storeToken(authToken, { name: response.data.name });
+    try {
+      const response = await authService.login(requestBody);
+      const authToken = response.data.authToken;
 
-        setEmail('');
-        setPassword('');
-        navigate(from, { replace: true });
-      })
-      .catch((err) => {
-        if (err.response && err.response.data) {
-          console.error('Error:', err.response.data.message);
-          toast.error(err.response.data.message);
-        } else {
-          console.log(err);
-          toast.error('error: failed to login');
-        }
-      });
+      storeToken(authToken);
+      authenticateUser();
+
+      navigate(from, { replace: true });
+    } catch (err) {
+      if (err.response && err.response.data) {
+        console.error('Error:', err.response.data.message);
+        toast.error(err.response.data.message);
+      } else {
+        console.log(err);
+        toast.error('error: failed to login');
+      }
+    }
   };
 
   return (

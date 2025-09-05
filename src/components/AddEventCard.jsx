@@ -1,28 +1,31 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
 import IsPrivat from './IsPrivat';
 import { AuthContext } from '../context/auth.context';
 import { toast } from 'react-toastify';
 
-export default function AddEventCard({ reload, setReload }) {
+export default function AddEventCard({ onEventCreated }) {
   const [formStatus, setFormStatus] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const apiRequest = (requestBody) => {
-    eventService
-      .createEvent(requestBody)
-      .then((response) => {
-        setFormStatus(false);
-        toast.success('add event successful');
-
-        // navigate('/events');
-        reload ? setReload(false) : setReload(true);
-      })
-      .catch((err) => console.log(err));
+  const apiRequest = async (requestBody) => {
+    console.log('Submitting event data:', requestBody);
+    try {
+      await eventService.createEvent(requestBody);
+      setFormStatus(false);
+      toast.success('Event created successfully!');
+      onEventCreated();
+    } catch (err) {
+      console.error('Failed to create event:', err);
+      const errorMessage =
+        err.response?.data?.message || 'Failed to create event. Please try again.';
+      toast.error(errorMessage);
+    }
   };
 
   return (
@@ -45,9 +48,7 @@ export default function AddEventCard({ reload, setReload }) {
             </button>
           ) : (
             <button
-              onClick={() => {
-                setFormStatus(true);
-              }}
+              onClick={() => navigate('/login', { state: { from: location } })}
               className="btn btn-secondary"
             >
               Login to create event

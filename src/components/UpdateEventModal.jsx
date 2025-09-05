@@ -7,7 +7,7 @@ import EventInputCard from './EventInputCard';
 import eventService from '../services/event.service';
 import { toast } from 'react-toastify';
 
-export function UpdateEventModal({ eventId, createdBy, reload, setReload }) {
+export function UpdateEventModal({ eventId, onEventUpdated }) {
   const [openModal, setOpenModal] = useState(false);
   const [formStatus, setFormStatus] = useState(true);
 
@@ -15,19 +15,18 @@ export function UpdateEventModal({ eventId, createdBy, reload, setReload }) {
     setOpenModal(false);
   }
 
-  const apiRequest = (requestBody) => {
-    eventService
-      .updateEvent(eventId, requestBody)
-      .then((response) => {
-        console.log(response.data);
-        toast.success('event update successful');
-        setReload((r) => !r);
-        onCloseModal();
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error('error: failed to update event');
-      });
+  const apiRequest = async (requestBody) => {
+    try {
+      await eventService.updateEvent(eventId, requestBody);
+      toast.success('Event updated successfully!');
+      onEventUpdated();
+      onCloseModal();
+    } catch (err) {
+      console.error('Failed to update event:', err);
+      const errorMessage =
+        err.response?.data?.message || 'Failed to update event. Please try again.';
+      toast.error(errorMessage);
+    }
   };
 
   return (

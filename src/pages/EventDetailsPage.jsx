@@ -7,22 +7,21 @@ import { Spinner } from 'flowbite-react';
 
 export default function EventDetailsPage() {
   const [event, setEvent] = useState(null);
-  const [reload, setReload] = useState(false);
   const { eventId } = useParams();
 
-  const getEvent = () => {
-    eventService
-      .getEvent(eventId)
-      .then((response) => setEvent(response.data))
-      .catch((err) => {
-        console.log('error: ', err);
-        toast.error('error: failed to load event');
-      });
+  const getEvent = async () => {
+    try {
+      const response = await eventService.getEvent(eventId);
+      setEvent(response.data);
+    } catch (err) {
+      console.log('error: ', err);
+      toast.error('error: failed to load event');
+    }
   };
 
   useEffect(() => {
     getEvent();
-  }, [reload]);
+  }, [eventId]);
 
   if (!event) {
     return (
@@ -34,7 +33,7 @@ export default function EventDetailsPage() {
 
   return (
     <div>
-      <EventCard event={event} reload={reload} setReload={setReload} />
+      <EventCard event={event} onEventUpdated={getEvent} />
     </div>
   );
 }

@@ -6,23 +6,25 @@ class UserService {
       baseURL: import.meta.env.VITE_SERVER_URL || 'http://localhost:5005',
     });
 
+    // Automatically set JWT token in the headers for every request
     this.api.interceptors.request.use((config) => {
       const storedToken = localStorage.getItem('authToken');
-
       if (storedToken) {
-        config.headers = { Authorization: `Bearer ${storedToken}` };
+        config.headers.Authorization = `Bearer ${storedToken}`;
       }
-
       return config;
     });
   }
 
-  getUser = (id) => {
-    return this.api.get(`/api/user/${id}`);
+  // GET /users/:userId
+  getUser = (userId) => {
+    return this.api.get(`/api/users/${userId}`);
   };
 
-  deleteUser = (id) => {
-    return this.api.delete(`/api/user/${id}`);
+  // DELETE /users/me
+  deleteUser = () => {
+    // No userId needed in the URL, the backend identifies the user via the token
+    return this.api.delete('/api/users/me');
   };
 }
 

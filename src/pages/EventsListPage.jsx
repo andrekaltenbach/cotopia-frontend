@@ -7,7 +7,6 @@ import { Spinner } from 'flowbite-react';
 
 function EventsListPage() {
   const [events, setEvents] = useState(null);
-  const [reload, setReload] = useState(false);
   const location = useLocation();
 
   const categoryImages = {
@@ -18,23 +17,24 @@ function EventsListPage() {
     transportation: '/images/transportImage.jpg',
   };
 
+  const fetchEvents = async () => {
+    try {
+      const searchParams = new URLSearchParams(location.search);
+      const category = searchParams.get('category');
+      const query = {};
+      if (category) query.category = category;
+
+      const response = await eventService.getAllEvents(query);
+      setEvents(response.data);
+    } catch (err) {
+      console.log('error: ', err);
+      toast.error('error: failed to load events');
+    }
+  };
+
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const category = searchParams.get('category');
-
-    const query = {};
-    if (category) query.category = category;
-
-    eventService
-      .getAllEvents(query)
-      .then((response) => {
-        setEvents(response.data);
-      })
-      .catch((err) => {
-        console.log('error: ', err);
-        toast.error('error: failed to load events');
-      });
-  }, [location.search, reload]);
+    fetchEvents();
+  }, [location.search]);
 
   if (!events) {
     return (
@@ -47,7 +47,7 @@ function EventsListPage() {
 
   return (
     <div>
-      <AddEventCard reload={reload} setReload={setReload} />
+      <AddEventCard onEventCreated={fetchEvents} />
       <div className="flex flex-col justify-center items-center mx-auto sm:flex-row sm:justify-center sm:max-w-7xl sm:flex-wrap sm:gap-5">
         {events
           .map((event, i) => {
