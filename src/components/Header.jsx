@@ -61,6 +61,17 @@ function Header() {
               About
             </NavLink>
           </li>
+          {user?.role === 'admin' && (
+            <li>
+              <NavLink
+                to="/admin"
+                onClick={() => setHamburgerOpen(false)}
+                className="block w-full sm:w-fit"
+              >
+                Admin Dashboard
+              </NavLink>
+            </li>
+          )}
         </ul>
         <div className="hamburger order-1 ml-5 mr-9 sm:hidden" onClick={toggleHamburger}>
           <Hamburger />
