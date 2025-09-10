@@ -35,6 +35,10 @@ h2 {
   @apply text-xl font-bold;
 }
 
+h3 {
+  @apply font-bold;
+}
+
 /* Header Section */
 .Header ul li {
   @apply sm:text-lg sm:font-semibold hover:bg-gray-300/20 rounded-lg p-2;

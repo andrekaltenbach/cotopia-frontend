@@ -13,6 +13,8 @@ import AboutPage from './pages/AboutPage';
 import IsAnon from './components/IsAnon';
 import UserProfilePage from './pages/UserProfilePage';
 import IsPrivat from './components/IsPrivat';
+import AdminPage from './pages/AdminPage';
+import IsAdmin from './components/isAdmin';
 
 function App() {
   return (
@@ -45,6 +47,14 @@ function App() {
               <IsAnon>
                 <LoginPage />
               </IsAnon>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <IsAdmin>
+                <AdminPage />
+              </IsAdmin>
             }
           />
           <Route path="/about" element={<AboutPage />} />
